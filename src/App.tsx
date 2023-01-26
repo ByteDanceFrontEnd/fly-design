@@ -13,7 +13,7 @@ export default defineComponent({
         <div class={styles.app}>
           <img alt="Vue logo" src={img} />
           <HelloWorld msg="fly-design" />
-          <card />
+          <card imgSrc={img} summary="Vue组件库" />
         </div>
       )
     }
