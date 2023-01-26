@@ -1,29 +1,20 @@
 # fly-design
 
-## Project setup
-```
-npm install
+## 技术栈
+
+Vue3 + TS
+
+## 安装工具
+
+```shell
+> npm i eslint prettier-eslint eslint-config-prettier --save-dev
+> npm install @vue/eslint-config-prettier
+> npm install sass sass-loader -D
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 遇到的问题
 
-### Compiles and minifies for production
+```shell
+1.全局注册的组件无法使用
+解决办法：全局注册的组件用小写字母
 ```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
