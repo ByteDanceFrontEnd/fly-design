@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import HelloWorld from './components/HelloWorld'
-import styles from './App.module.css'
+import styles from './App.module.scss'
 
 // eslint-disable-nextline
 const img = require('./assets/logo.png')

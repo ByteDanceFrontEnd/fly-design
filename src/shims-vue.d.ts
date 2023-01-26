@@ -5,7 +5,7 @@ declare module '*.vue' {
   export default component
 }
 
-declare module '*.css' {
+declare module '*.scss' {
   const content: { [key: string]: any }
   export = content
 }
