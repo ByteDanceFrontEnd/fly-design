@@ -1,4 +1,8 @@
 import { createApp } from 'vue'
 import App from './App'
+import flyd from './components'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+app.use(flyd)
+app.mount('#app')

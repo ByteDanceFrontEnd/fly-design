@@ -9,4 +9,5 @@ Vue3 + TS
 ```shell
 > npm i eslint prettier-eslint eslint-config-prettier --save-dev
 > npm install @vue/eslint-config-prettier
+> npm install sass sass-loader -D
 ```

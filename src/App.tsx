@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld'
+import HelloWorld from './HelloWorld'
 import styles from './App.module.scss'
 
 // eslint-disable-nextline
@@ -13,6 +13,7 @@ export default defineComponent({
         <div class={styles.app}>
           <img alt="Vue logo" src={img} />
           <HelloWorld msg="fly-design" />
+          <card />
         </div>
       )
     }
