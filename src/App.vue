@@ -1,3 +1,10 @@
+<template>
+  <div class="app">
+    <card imgSrc="logo.png" summary="Vue组件库" />
+  </div>
+</template>
+
+<style>
 .app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6,3 +13,4 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+</style>
