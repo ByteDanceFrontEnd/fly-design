@@ -15,13 +15,13 @@
 </template>
 
 <script setup lang="ts">
-type Props = {
+type CardDProps = {
   width?: number
   imgSrc?: string
   imgHeight?: number
   summary?: string
 }
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<CardDProps>(), {
   width: 0,
   imgSrc: '',
   imgHeight: 0,

@@ -1,10 +1,10 @@
-# Card
+# Card 卡片
 
 卡片组件
 
 ### 示例
 
-<card imgSrc='/logo.png' summary='Vue组件库' />
+<Card imgSrc='/logo.png' summary='Vue组件库' />
 
 ### 代码
 
