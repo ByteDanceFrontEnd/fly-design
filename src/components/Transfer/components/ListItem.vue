@@ -14,22 +14,26 @@
       type="checkbox"
       :disabled="item.disabled"
       :id="'__checkbox__' + item.id"
-      @click="checkboxClick($event.target.checked, leftOrRight, item)"
+      @click="checkboxClick($event.target.checked, leftOrRight as string, item)"
     />
     <label :for="'__checkbox__' + item.id">{{ item.label }}</label>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { PropType } from 'vue'
+import { ITransferItem } from '../typings'
+
+
 defineProps({
   data: {
-    type: Array,
+    type: Array as PropType<ITransferItem[]>,
     default: () => [],
   },
   leftOrRight: {
     type: String,
     validator(value) {
-      return ['left', 'right'].includes(value)
+      return ['left', 'right'].includes(value as string)
     },
   },
   emptyKeyWords: {
@@ -39,11 +43,15 @@ defineProps({
 })
 const emit = defineEmits(['checkboxClick', 'dragItem'])
 
-const checkboxClick = (checked, leftOrRight, item) => {
+const checkboxClick = (
+  checked: boolean,
+  leftOrRight: string,
+  item: ITransferItem,
+) => {
   emit('checkboxClick', checked, leftOrRight, item)
 }
 
-const dragItem = (item) => {
+const dragItem = (item: ITransferItem) => {
   emit('dragItem', item)
 }
 </script>

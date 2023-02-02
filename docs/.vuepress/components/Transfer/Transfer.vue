@@ -46,8 +46,9 @@
   </div>
 </template>
 
-<script setup>
-import propsTransfer from './extends/props'
+<script setup lang="ts">
+import { withDefaults } from 'vue'
+import { ITransferItem } from './typings'
 import ListTitle from './components/ListTitle.vue'
 import ButtonGroup from './components/ButtonGroup.vue'
 import ListItem from './components/ListItem.vue'
@@ -58,30 +59,40 @@ import {
   useDragedItem,
 } from './extends/hooks'
 
-const props = defineProps(propsTransfer)
-const emits = defineEmits(['update:modelValue'])
-
-const [checkedData, addCheckedData, removeCheckedData] = useCheckedData()
-const [rightListData, addRightListData, removeRightListData] = useRightList(
-  [],
-  checkedData,
-  props.modelValue,
-  emits,
+const props = withDefaults(
+  defineProps<{
+    data?: ITransferItem[]
+    rightTitle?: string
+    leftTitle?: string
+    emptyKeyWords?: string
+    modelValue?: ITransferItem[]
+  }>(),
+  {
+    data: () => [],
+    rightTitle: 'List2',
+    leftTitle: 'List1',
+    emptyKeyWords: 'No data',
+    modelValue: () => [],
+  },
 )
-const [leftListData, transferButtonDisabled] = useComputedData(
-  props.data,
-  rightListData,
-  checkedData,
-)
+const emits = defineEmits<{
+  (e: 'update:modelValue'): void
+}>()
 
-const [dragedItem, setDragedItem] = useDragedItem()
-
-const setCheckedData = (checked, leftOrRight, item) => {
-  checked
-    ? addCheckedData(leftOrRight, item)
-    : removeCheckedData(leftOrRight, item.id)
-}
+const { checkedData, setCheckedData } = useCheckedData()
+const { rightListData, addRightListData, removeRightListData } = useRightList([],checkedData,props.modelValue,emits,)
+const { leftListData, transferButtonDisabled } = useComputedData(props.data,rightListData,checkedData,)
+const { dragedItem, setDragedItem } = useDragedItem()
 </script>
+
+<style>
+:root {
+  --Trasfer-item-bg: #409eff;
+  --Transfer-item-color: #909399;
+  --Transfer-height: 318px;
+  --Transfer-head-height: 32px;
+}
+</style>
 
 <style lang="scss" scoped>
 .transfer {
