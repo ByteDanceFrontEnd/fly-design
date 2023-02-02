@@ -1,7 +1,6 @@
-# Transfer
+# Transfer 穿梭框
 
 ### 示例
-
 
 <Transfer
       :data="[
@@ -30,7 +29,6 @@
       right-title="右边"
       empty-key-words="没有数据"
     ></Transfer>
-
 
 <details>
  
@@ -74,7 +72,9 @@ let list = [
 const value = ref([])
 const data = ref(list)
 </script>
+
 ```
 </details>
 
 
+```
