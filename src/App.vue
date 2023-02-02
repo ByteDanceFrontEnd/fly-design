@@ -1,14 +1,15 @@
 <template>
   <div class="app">
     <card imgSrc="logo.png" summary="Vue组件库" />
-    <Transfer
-      :data="data"
-      left-title="左边"
-      right-title="右边"
-      empty-key-words="没有数据"
-      v-model="value"
-    ></Transfer>
   </div>
+  <Transfer
+    :data="data"
+    left-title="左边"
+    right-title="右边"
+    empty-key-words="没有数据"
+    v-model="value"
+  ></Transfer>
+  <Input placeholder="Hello" />
 </template>
 
 <script setup>
@@ -75,3 +76,15 @@ let list = [
 const value = ref([])
 const data = ref(list)
 </script>
+
+<style>
+.app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+</style>
