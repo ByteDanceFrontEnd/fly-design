@@ -9,24 +9,27 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  leftButtonDisabled: {
-    type: Boolean,
-    default: true,
-  },
-  rightButtonDisabled: {
-    type: Boolean,
-    default: true,
-  },
+<script setup lang="ts">
+interface IProps {
+  leftButtonDisabled: boolean
+  rightButtonDisabled: boolean
+}
+interface IEmits {
+  (e: 'leftButtonClick'): void
+  (e: 'rightButtonClick'): void
+}
+
+withDefaults(defineProps<IProps>(), {
+  leftButtonDisabled: true,
+  rightButtonDisabled: true,
 })
 
-const emit = defineEmits(['leftButtonClick', 'rightButtonClick'])
+const emit = defineEmits<IEmits>()
 
-const leftButtonClick = () => {
+const leftButtonClick = (): void => {
   emit('leftButtonClick')
 }
-const rightButtonClick = () => {
+const rightButtonClick = (): void => {
   emit('rightButtonClick')
 }
 </script>

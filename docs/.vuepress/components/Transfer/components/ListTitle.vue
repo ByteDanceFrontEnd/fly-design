@@ -3,18 +3,10 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+interface IProps {
   title: string
 }
-withDefaults(defineProps<Props>(), {
-  title: '列表',
-})
-// defineProps({
-//   title: {
-//     type: String,
-//     default: '列表',
-//   },
-// })
+defineProps<IProps>()
 </script>
 
 <style lang="scss" scoped>
