@@ -1,15 +1,28 @@
 <template>
-  <input :placeholder="placeholder" />
+  <input
+    :placeholder="placeholder"
+    :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
+  />
 </template>
 
 <script setup lang="ts">
 type InputProps = {
   placeholder?: string
+  size?: string
 }
 
 withDefaults(defineProps<InputProps>(), {
   placeholder: '',
+  size: '',
 })
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+input {
+  height: 32px;
+  padding: 4px 11px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+}
+</style>

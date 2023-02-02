@@ -9,7 +9,11 @@
     empty-key-words="没有数据"
     v-model="value"
   ></Transfer>
+  <Input placeholder="Hello" size="large" />
+  <br /><br />
   <Input placeholder="Hello" />
+  <br /><br />
+  <Input placeholder="Hello" size="small" />
 </template>
 
 <script setup>

@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import './style/reset.css'
+// import './style/reset.css'
 import './style/root.css'
 import Card from './card'
 import Transfer from './Transfer'
