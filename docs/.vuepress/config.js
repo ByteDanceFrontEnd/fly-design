@@ -1,6 +1,9 @@
 import { defaultTheme } from '@vuepress/theme-default'
+<<<<<<< HEAD
+=======
 import { searchPlugin } from '@vuepress/plugin-search'
 
+>>>>>>> ca16282d97f496300a7e7935e191760b65c199b4
 export default {
   title: 'Fly-Design',
   base: '/fly-design/',
@@ -14,6 +17,10 @@ export default {
   ],
 
   theme: defaultTheme({
+<<<<<<< HEAD
+    // 侧边栏数组
+    // 所有页面会使用相c同的侧边栏
+=======
     // 在这里进行配置
     palette: '/styles/palette.styl',
     logo: '/favicon.ico',
@@ -23,6 +30,7 @@ export default {
       { text: '指南', link: 'componentDocs' },
       { text: '组件', link: '/componentDocs/Transfer.md' },
     ],
+>>>>>>> ca16282d97f496300a7e7935e191760b65c199b4
     sidebar: [
       // SidebarItem
       {
