@@ -14,6 +14,11 @@
   <Input placeholder="Hello" />
   <br /><br />
   <Input placeholder="Hello" size="small" />
+  <div>
+    <Button>Default</Button>
+    <Button type="primary">Primary</Button>
+    <Button disabled>Disabled</Button>
+  </div>
 </template>
 
 <script setup>
