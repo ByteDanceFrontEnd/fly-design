@@ -6,17 +6,28 @@
         @drop="removeRightListData([dragedItem])"
         @dragover.prevent
       >
-        <ListTitle :title="leftTitle"></ListTitle>
+        <ListTitle
+          :title="leftTitle"
+          :showCount="showCount"
+          :checkedCount="checkedData.left.length"
+          :all-count="leftListData.length"
+          left-or-right="left"
+          :can-select-list-len="leftNoDisabledLen"
+          @select-all="selectAll"
+        ></ListTitle>
+        <!-- 左边 -->
         <div class="itemsWraper">
           <ListItem
             :data="leftListData"
             :empty-key-words="emptyKeyWords"
-            left-or-right="left"
+            leftOrRight="left"
+            :checkedData="checkedData.left"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
         </div>
       </div>
+
       <div class="box button-group">
         <ButtonGroup
           :left-button-disabled="transferButtonDisabled.left"
@@ -25,18 +36,28 @@
           @right-button-click="addRightListData(checkedData.left)"
         ></ButtonGroup>
       </div>
+
       <div
         class="box right-list"
         @drop="addRightListData([dragedItem])"
         @dragover.prevent
       >
-        <ListTitle :title="rightTitle"></ListTitle>
-        <!-- <h1>{{ emptyKeyWords }}</h1> -->
+        <ListTitle
+          :title="rightTitle"
+          :showCount="showCount"
+          :checkedCount="checkedData.right.length"
+          :all-count="rightListData.length"
+          left-or-right="right"
+          :can-select-list-len="rightListData.length"
+          @select-all="selectAll"
+        ></ListTitle>
+        <!-- 右边 -->
         <div class="itemsWraper">
           <ListItem
             :empty-key-words="emptyKeyWords"
             :data="rightListData"
             left-or-right="right"
+            :checkedData="checkedData.right"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
@@ -47,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { withDefaults } from 'vue'
+import { withDefaults, reactive } from 'vue'
 import { ITransferItem } from './typings'
 import ListTitle from './components/ListTitle.vue'
 import ButtonGroup from './components/ButtonGroup.vue'
@@ -57,6 +78,7 @@ import {
   useRightList,
   useCheckedData,
   useDragedItem,
+  useSelect,
 } from './extends/hooks'
 
 const props = withDefaults(
@@ -66,6 +88,7 @@ const props = withDefaults(
     leftTitle?: string
     emptyKeyWords?: string
     modelValue?: ITransferItem[]
+    showCount?: boolean
   }>(),
   {
     data: () => [],
@@ -73,16 +96,24 @@ const props = withDefaults(
     leftTitle: 'List1',
     emptyKeyWords: 'No data',
     modelValue: () => [],
+    showCount: true,
   },
 )
 const emits = defineEmits<{
   (e: 'update:modelValue'): void
 }>()
-
 const { checkedData, setCheckedData } = useCheckedData()
-const { rightListData, addRightListData, removeRightListData } = useRightList([],checkedData,props.modelValue,emits,)
-const { leftListData, transferButtonDisabled } = useComputedData(props.data,rightListData,checkedData,)
+const { rightListData, addRightListData, removeRightListData } = useRightList(
+  [],
+  checkedData,
+  props.modelValue,
+  emits,
+)
+const { leftListData, transferButtonDisabled, leftNoDisabledLen } =
+  useComputedData(props.data, rightListData, checkedData)
 const { dragedItem, setDragedItem } = useDragedItem()
+
+const { selectAll } = useSelect(leftListData, rightListData, checkedData)
 </script>
 
 <style>
@@ -110,11 +141,24 @@ const { dragedItem, setDragedItem } = useDragedItem()
       height: calc(var(--Transfer-height) - 32px);
       position: relative;
 
-      &:empty {
-        &::after {
-          // content 无法使用v-bind传值
-          content: 'No data';
-        }
+      &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 12px; /*高宽分别对应横竖滚动条的尺寸*/
+        height: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        /*滚动条里面小方块*/
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        background: rgba(191, 191, 191, 0.2);
+      }
+
+      &::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+        border-radius: 0;
+        background: rgba(0, 0, 0, 0);
       }
     }
   }
