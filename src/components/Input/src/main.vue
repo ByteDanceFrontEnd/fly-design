@@ -9,11 +9,17 @@
 type InputProps = {
   placeholder?: string
   size?: string
+  showPassword?: boolean
+  prefixIcon?: string
+  suffixIcon?: string
 }
 
 withDefaults(defineProps<InputProps>(), {
   placeholder: '',
   size: '',
+  showPassword: false,
+  prefixIcon: '',
+  suffixIcon: '',
 })
 </script>
 
