@@ -11,7 +11,19 @@
 <input placeholder="Please Input" />
 ```
 
+## 禁用状态
+
+通过 `disabled` 属性指定是否禁用 Input 组件
+
+<Input placeholder="Please Input" disabled />
+
+```html
+<input placeholder="Please Input" disabled />
+```
+
 ## 设置尺寸
+
+使用 size 属性改变输入框大小。
 
 large
 <Input placeholder="Hello" size="large" />
