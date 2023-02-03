@@ -4,11 +4,13 @@ import './styles/index.css'
 import Card from './components/Card/Card.vue'
 import Transfer from './components/Transfer/Transfer.vue'
 import Input from './components/Input/Input.vue'
+import Upload from './components/upload/upload.vue'
 
 export default defineClientConfig({
   enhance({ app }) {
     app.component('Card', Card)
     app.component('Transfer', Transfer)
     app.component('Input', Input)
+    app.component('Upload', Upload)
   },
 })
