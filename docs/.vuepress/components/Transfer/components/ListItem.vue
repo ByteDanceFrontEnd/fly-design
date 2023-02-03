@@ -11,12 +11,17 @@
     @dragstart="dragItem(item)"
   >
     <input
+      :checked="isChecked(item.id)"
       type="checkbox"
       :disabled="item.disabled"
       :id="'__checkbox__' + item.id"
       @click="checkboxClick($event.target.checked, leftOrRight as string, item)"
     />
-    <label :for="'__checkbox__' + item.id">{{ item.label }}</label>
+    <label
+      :for="'__checkbox__' + item.id"
+      :class="{checkedItem: isChecked(item.id as number)}"
+      >{{ item.label }}</label
+    >
   </div>
 </template>
 
@@ -24,8 +29,7 @@
 import { PropType } from 'vue'
 import { ITransferItem } from '../typings'
 
-
-defineProps({
+const props = defineProps({
   data: {
     type: Array as PropType<ITransferItem[]>,
     default: () => [],
@@ -40,8 +44,17 @@ defineProps({
     type: String,
     default: '',
   },
+  checkedData: {
+    type: Array as PropType<ITransferItem[]>,
+    default: () => [],
+  },
 })
+
 const emit = defineEmits(['checkboxClick', 'dragItem'])
+
+const isChecked = (id: number) => {
+  return props.checkedData.find((item) => item.id == id)
+}
 
 const checkboxClick = (
   checked: boolean,
@@ -80,7 +93,6 @@ const dragItem = (item: ITransferItem) => {
     top: 8px;
     width: 14px;
     height: 14px;
-    background-color: var(--Trasfer-item-bg);
   }
 
   label {
@@ -88,6 +100,11 @@ const dragItem = (item: ITransferItem) => {
     display: block;
     height: 100%;
     user-select: none;
+
+    &.checkedItem {
+      color: var(--Trasfer-item-bg);
+      // color: red;
+    }
   }
 
   &.disabled {
