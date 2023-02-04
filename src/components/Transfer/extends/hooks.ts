@@ -1,4 +1,4 @@
-import { ref, computed, reactive, watch } from 'vue'
+import { ref, computed, reactive, watch, ComputedRef } from 'vue'
 import type { Ref } from 'vue'
 import { ITransferItem } from '../typings'
 
@@ -62,6 +62,7 @@ interface IuseComputedData {
     left: boolean
     right: boolean
   }>
+  leftNoDisabledLen: ComputedRef<number>
 }
 
 export function useComputedData(
@@ -76,6 +77,16 @@ export function useComputedData(
       }
     })
   })
+  // 左边可选item的数量
+  const leftNoDisabledLen = computed(() => {
+    let num = 0
+    leftListData.value.forEach((item) => {
+      if (!item.disabled) {
+        num++
+      }
+    })
+    return num
+  })
 
   const transferButtonDisabled = computed(() => {
     return {
@@ -84,7 +95,7 @@ export function useComputedData(
     }
   })
 
-  return { leftListData, transferButtonDisabled }
+  return { leftListData, transferButtonDisabled, leftNoDisabledLen }
 }
 
 interface IuseCheckedData {
@@ -154,4 +165,58 @@ export function useDragedItem(): IuseDragedItem {
   }
 
   return { dragedItem, setDragedItem }
+}
+
+interface IuseSelect {
+  selectAll(leftOrRight: string, checked: boolean): void
+}
+
+export function useSelect(
+  leftListData: Ref<ITransferItem[]>,
+  rightListData: Ref<ITransferItem[]>,
+  checkedData: IcheckedData,
+): IuseSelect {
+  function selectAll(leftOrRight: string, checked: boolean) {
+    switch (leftOrRight) {
+      case 'left':
+        if (checked) {
+          // 先清空checkedData
+          checkedData.left.length = 0
+          leftListData.value.forEach((item) => {
+            if (!item.disabled) {
+              checkedData.left.push(item)
+            }
+          })
+        } else {
+          leftListData.value.forEach((item) => {
+            if (!item.disabled) {
+              checkedData.left.length = 0
+            }
+          })
+        }
+        break
+      case 'right':
+        if (checked) {
+          // 先清空checkedData
+          checkedData.right.length = 0
+          rightListData.value.forEach((item) => {
+            if (!item.disabled) {
+              checkedData.right.push(item)
+            }
+          })
+        } else {
+          rightListData.value.forEach((item) => {
+            if (!item.disabled) {
+              checkedData.right.length = 0
+            }
+          })
+        }
+        break
+      default:
+        break
+    }
+    // console.log(leftOrRight, checked)
+  }
+
+  return { selectAll }
 }

@@ -5,8 +5,9 @@ import Transfer from './Transfer'
 import Input from './Input'
 import Button from './Button'
 import Layout from './Layout'
+import Upload from './upload'
 
-const components = [Card, Transfer, Input, Button, Layout]
+const components = [Card, Transfer, Input, Button, Layout, Upload]
 
 export default {
   install(app: App) {

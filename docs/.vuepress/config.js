@@ -87,7 +87,7 @@ export default {
           },
           {
             text: 'Upload 上传',
-            link: '/componentDocs/Button.md',
+            link: '/componentDocs/Upload.md',
           },
         ],
       },

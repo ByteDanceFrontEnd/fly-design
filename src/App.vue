@@ -49,7 +49,6 @@
     </Layout>
   </div>
   <br />
-
   <!-- 侧边布局 -->
   <div class="common-layout">
     <Layout>
@@ -61,6 +60,24 @@
       </Layout>
     </Layout>
   </div>
+
+  <!-- upload -->
+  <upload
+    class="uploader-area"
+    accept="images/png images/jpeg"
+    :size="150 * 1024"
+    :on-success="uploadSuccess"
+    :on-error="uploadError"
+  >
+    <template v-slot:uploader-area>
+      <div>
+        <div class="fly-uploader--text">将文件拖到此处，或<a>点击上传</a></div>
+      </div>
+    </template>
+    <template v-slot:tip>
+      <div class="fly-uploader--tip">只能上传jpg/png文件，且不超过500kb</div>
+    </template>
+  </upload>
 </template>
 
 <script setup>
