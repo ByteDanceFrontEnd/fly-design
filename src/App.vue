@@ -1,7 +1,10 @@
 <template>
+  <!-- Card -->
   <div class="app">
     <card imgSrc="logo.png" summary="Vue组件库" />
   </div>
+
+  <!-- Transfer -->
   <Transfer
     :data="data"
     left-title="左边"
@@ -9,15 +12,54 @@
     empty-key-words="没有数据"
     v-model="value"
   ></Transfer>
+
+  <!-- Input -->
   <Input placeholder="Hello" size="large" />
   <br /><br />
   <Input placeholder="Hello" />
   <br /><br />
   <Input placeholder="Hello" size="small" />
+
+  <!-- Button -->
   <div>
     <Button>Default</Button>
     <Button type="primary">Primary</Button>
     <Button disabled>Disabled</Button>
+  </div>
+
+  <!-- Layout -->
+  <!-- 上中下布局 -->
+  <div class="common-layout">
+    <Layout direction="vertical">
+      <Header>Header</Header>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Layout>
+  </div>
+  <br />
+  <!-- 顶部侧边布局 -->
+  <div class="common-layout">
+    <Layout direction="vertical">
+      <Header>Header</Header>
+      <Layout>
+        <Sider>Sider</Sider>
+        <Content>Content</Content>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
+  </div>
+  <br />
+
+  <!-- 侧边布局 -->
+  <div class="common-layout">
+    <Layout>
+      <Sider>Sider</Sider>
+      <Layout direction="vertical">
+        <Header>Header</Header>
+        <Content>Content</Content>
+        <Footer>Footer</Footer>
+      </Layout>
+    </Layout>
   </div>
 </template>
 
@@ -95,5 +137,10 @@ const data = ref(list)
   color: #2c3e50;
   margin-top: 30px;
   margin-left: 20px;
+}
+.common-layout {
+  width: 1000px;
+  color: white;
+  text-align: center;
 }
 </style>
