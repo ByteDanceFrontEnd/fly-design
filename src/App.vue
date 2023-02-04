@@ -24,7 +24,7 @@
   <upload
     class="uploader-area"
     accept="images/png images/jpeg"
-    :size="150 * 1024"
+    :size="1920 * 1080"
     :on-success="uploadSuccess"
     :on-error="uploadError"
   >
@@ -102,6 +102,14 @@ let list = [
 // list = []
 const value = ref([])
 const data = ref(list)
+
+// upload
+function uploadSuccess() {
+  // TODO
+}
+function uploadError(msg) {
+  alert(msg)
+}
 </script>
 
 <style>

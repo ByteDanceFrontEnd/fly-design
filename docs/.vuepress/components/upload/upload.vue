@@ -25,7 +25,7 @@
 </template>
 <script setup>
 // ts不太熟，我先用js写，之后再修改成ts
-import { reactive, ref, watch } from 'vue'
+import { reactive, ref, watch, toRefs } from 'vue'
 import './style.scss'
 
 const props = defineProps({
@@ -35,8 +35,12 @@ const props = defineProps({
   size: {
     type: Number,
   },
-  onSuccess: Function,
-  onError: Function,
+  onSuccess: {
+    type: Function,
+  },
+  onError: {
+    type: Function,
+  },
 })
 
 let sourceFiles = ref([])
@@ -55,21 +59,66 @@ function handleFileUploader(event, type) {
   handler[type](event)
 }
 
+//上传图片blob和base64格式
+function handleImages(files) {
+  if (window.URL && window.URL.createObjectURL) {
+    createObjectURL(files)
+  } else {
+    createBase64Image(files)
+  }
+}
+
+let tempImages = ref([])
+function createObjectURL(files) {
+  let filesArray = files.map((file) => ({
+    file,
+    url: URL.createObjectURL(new Blob(file)),
+  }))
+  tempImages.value = filesArray
+}
+
+function createBase64Image(files) {
+  const handleFile = function (file) {
+    return new Promise((resolve, reject) => {
+      let reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = (e) => {
+        resolve(e.target.result)
+      }
+
+      reader.onerror = (error) => {
+        reject('文件读取失败' + error)
+      }
+    })
+  }
+
+  let files_promises = files.map(handleFile)
+
+  Promise.all(files_promises).then((results) => {
+    this.tempImages = results.map((res, index) => {
+      return {
+        url: res,
+        file: files[index],
+      }
+    })
+  })
+}
+
 watch(sourceFiles.value, (value) => {
   let files = Array.from(value)
-  console.log(files)
-  const { size, accept, onError } = props
+  const { size, accept, onError } = toRefs(props)
 
+  // 文件校验
   if (files.length <= 0) return
-  if (files.some((file) => file[0].size > size)) {
-    return onError(`文件最大上传${size}k`)
+  if (files.some((file) => file[0].size > size.value)) {
+    return onError.value(`文件最大上传${size.value}k`)
+  }
+  if (files.some((file) => !accept.value.split(' ').indexOf(file[0].type))) {
+    return onError.value(`只接受${accept.value}类型的文件`)
   }
 
-  files.forEach((file) => {
-    console.log(file)
-  })
-  if (files.some((file) => !~accept.indexOf(file[0].type))) {
-    return onError(`只接受${accept}类型的文件`)
-  }
+  // 处理图片文件
+  handleImages(files)
+  console.log(tempImages)
 })
 </script>
