@@ -15,6 +15,7 @@
           :can-select-list-len="leftNoDisabledLen"
           @select-all="selectAll"
         ></ListTitle>
+
         <!-- 左边 -->
         <div class="itemsWraper">
           <ListItem
@@ -22,6 +23,7 @@
             :empty-key-words="emptyKeyWords"
             leftOrRight="left"
             :checkedData="checkedData.left"
+            :filterable="filterable"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
@@ -58,6 +60,7 @@
             :data="rightListData"
             left-or-right="right"
             :checkedData="checkedData.right"
+            :filterable="filterable"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
@@ -89,6 +92,7 @@ const props = withDefaults(
     emptyKeyWords?: string
     modelValue?: ITransferItem[]
     showCount?: boolean
+    filterable?: boolean
   }>(),
   {
     data: () => [],
@@ -97,6 +101,7 @@ const props = withDefaults(
     emptyKeyWords: 'No data',
     modelValue: () => [],
     showCount: true,
+    filterable: false,
   },
 )
 const emits = defineEmits<{

@@ -3,6 +3,17 @@
   <span v-show="data.length == 0" class="empty-content">{{
     emptyKeyWords
   }}</span>
+  <!-- 搜索框 -->
+  <div class="search" v-if="filterable">
+    <svg-icon name="search" color="#c7c7c7" />
+    <input
+      type="text"
+      placeholder="filter-key-words"
+      size="small"
+      @input="inputChange"
+    />
+  </div>
+  <!-- 列表项 -->
   <div
     v-for="item in data"
     :key="item.id"
@@ -48,12 +59,19 @@ const props = defineProps({
     type: Array as PropType<ITransferItem[]>,
     default: () => [],
   },
+  filterable: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const emit = defineEmits(['checkboxClick', 'dragItem'])
 
 const isChecked = (id: number) => {
   return props.checkedData.find((item) => item.id == id)
+}
+const inputChange = () => {
+  console.log(111)
 }
 
 const checkboxClick = (
@@ -73,7 +91,7 @@ const dragItem = (item: ITransferItem) => {
 .empty-content {
   color: var(--Transfer-item-color);
   position: absolute;
-  top: 20px;
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -112,6 +130,25 @@ const dragItem = (item: ITransferItem) => {
 
     label {
       cursor: not-allowed;
+    }
+  }
+}
+
+.search {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  input {
+    width: 70%;
+    height: 40%;
+    border: none;
+    font-size: 14px;
+    &::placeholder {
+      font-size: 14px;
     }
   }
 }

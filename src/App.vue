@@ -7,6 +7,7 @@
     left-title="左边"
     right-title="右边"
     empty-key-words="没有数据"
+    filterable
     v-model="value"
   ></Transfer>
   <Input placeholder="Hello" size="large" />
