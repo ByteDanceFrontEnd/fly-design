@@ -2,7 +2,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 import { searchPlugin } from '@vuepress/plugin-search'
 
 export default {
-  title: 'Fly-Design',
+  title: 'Fly Design 1.0',
   base: '/fly-design/',
   description: '助力开发者「更灵活」地搭建出「更美」的产品',
   head: [['link', { rel: 'icon', href: `/favicon.ico` }]],
@@ -25,6 +25,10 @@ export default {
     ],
     sidebar: [
       // SidebarItem
+      {
+        text: '组件总览',
+        link: '/componentDocs/Transfer.md',
+      },
       {
         text: '通用',
         children: [
