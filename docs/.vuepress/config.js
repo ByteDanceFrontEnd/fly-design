@@ -48,7 +48,7 @@ export default {
           },
           {
             text: 'Layout 布局',
-            link: '/componentDocs/Button.md',
+            link: '/componentDocs/Layout.md',
           },
           {
             text: 'Space 间距',

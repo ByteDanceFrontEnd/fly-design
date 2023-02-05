@@ -1,7 +1,10 @@
 <template>
+  <!-- Card -->
   <div class="app">
     <card imgSrc="logo.png" summary="Vue组件库" />
   </div>
+
+  <!-- Transfer -->
   <Transfer
     :data="data"
     left-title="左边"
@@ -10,22 +13,60 @@
     filterable
     v-model="value"
   ></Transfer>
+
+  <!-- Input -->
   <Input placeholder="Hello" size="large" />
   <br /><br />
   <Input placeholder="Hello" />
   <br /><br />
   <Input placeholder="Hello" size="small" />
+
+  <!-- Button -->
   <div>
     <Button>Default</Button>
     <Button type="primary">Primary</Button>
     <Button disabled>Disabled</Button>
   </div>
 
+  <!-- Layout -->
+  <!-- 上中下布局 -->
+  <div class="common-layout">
+    <Layout direction="vertical">
+      <Header>Header</Header>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Layout>
+  </div>
+  <br />
+  <!-- 顶部侧边布局 -->
+  <div class="common-layout">
+    <Layout direction="vertical">
+      <Header>Header</Header>
+      <Layout>
+        <Sider>Sider</Sider>
+        <Content>Content</Content>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
+  </div>
+  <br />
+  <!-- 侧边布局 -->
+  <div class="common-layout">
+    <Layout>
+      <Sider>Sider</Sider>
+      <Layout direction="vertical">
+        <Header>Header</Header>
+        <Content>Content</Content>
+        <Footer>Footer</Footer>
+      </Layout>
+    </Layout>
+  </div>
+
   <!-- upload -->
   <upload
     class="uploader-area"
     accept="images/png images/jpeg"
-    :size="150 * 1024"
+    :size="1920 * 1080"
     :on-success="uploadSuccess"
     :on-error="uploadError"
   >
@@ -103,6 +144,14 @@ let list = [
 // list = []
 const value = ref([])
 const data = ref(list)
+
+// upload
+function uploadSuccess() {
+  // TODO
+}
+function uploadError(msg) {
+  alert(msg)
+}
 </script>
 
 <style>
@@ -114,5 +163,10 @@ const data = ref(list)
   color: #2c3e50;
   margin-top: 30px;
   margin-left: 20px;
+}
+.common-layout {
+  width: 1000px;
+  color: white;
+  text-align: center;
 }
 </style>
