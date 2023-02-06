@@ -1,5 +1,4 @@
 import { defaultTheme } from '@vuepress/theme-default'
-import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { tocPlugin } from '@vuepress/plugin-toc'
 
 export default {

@@ -3,6 +3,7 @@ node_modules
 /dist
 .cache
 .temp
+docs/.vuepress/dist
 
 # local env files
 .env.local
