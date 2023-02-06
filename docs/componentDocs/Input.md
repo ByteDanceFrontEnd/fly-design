@@ -2,6 +2,8 @@
 
 通过鼠标或键盘输入内容，是最基础的表单域的包装。
 
+[[toc]]
+
 ## 基础用法
 
 <br/>
@@ -38,7 +40,7 @@ small<br/>
 <input placeholder="Hello" size="small" />
 ```
 
-# 文本域
+## 文本域
 
 用于输入多行文本信息可缩放的输入框。 添加 `type="textarea"` 属性来将 `input` 元素转换为原生的 `textarea` 元素。
 
