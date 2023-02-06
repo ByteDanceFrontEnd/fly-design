@@ -4,6 +4,7 @@ node_modules
 .cache
 .temp
 docs/.vuepress/dist
+docs/.vitepress/cache
 
 # local env files
 .env.local
