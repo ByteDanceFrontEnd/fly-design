@@ -1,8 +1,13 @@
 <template>
-  <input
-    :placeholder="placeholder"
-    :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
-  />
+  <div v-if="type === 'textarea'">
+    <textarea :placeholder="placeholder" :rows="rows" :cols="cols" />
+  </div>
+  <div v-if="!type">
+    <input
+      :placeholder="placeholder"
+      :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -12,6 +17,9 @@ type InputProps = {
   showPassword?: boolean
   prefixIcon?: string
   suffixIcon?: string
+  type?: string
+  rows?: number
+  cols?: number
 }
 
 withDefaults(defineProps<InputProps>(), {
@@ -20,15 +28,43 @@ withDefaults(defineProps<InputProps>(), {
   showPassword: false,
   prefixIcon: '',
   suffixIcon: '',
+  type: '',
+  rows: 5,
+  cols: 33,
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 input {
   height: 32px;
   padding: 4px 11px;
   border-width: 1px;
   border-style: solid;
   border-radius: 6px;
+}
+
+input:focus {
+  border-color: #4096ff;
+  border-inline-end-width: 1px;
+}
+
+div {
+  display: inline-block;
+}
+
+textarea {
+  border-radius: 5px;
+  padding: 5px 11px;
+  outline: none;
+}
+
+textarea:hover {
+  border-color: #4096ff;
+  border-inline-end-width: 1px;
+}
+
+textarea:focus {
+  border-color: #4096ff;
+  border-inline-end-width: 1px;
 }
 </style>

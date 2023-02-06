@@ -1,18 +1,17 @@
 import { defaultTheme } from '@vuepress/theme-default'
-import { searchPlugin } from '@vuepress/plugin-search'
+import { tocPlugin } from '@vuepress/plugin-toc'
 
 export default {
   title: 'Fly Design 1.0',
   base: '/fly-design/',
   description: '助力开发者「更灵活」地搭建出「更美」的产品',
   head: [['link', { rel: 'icon', href: `/favicon.ico` }]],
-
   plugins: [
-    searchPlugin({
-      // 配置项
+    tocPlugin({
+      componentName: 'Toc',
+      defaultPropsOptions: '{}',
     }),
   ],
-
   theme: defaultTheme({
     // 在这里进行配置
     palette: '/styles/palette.styl',
