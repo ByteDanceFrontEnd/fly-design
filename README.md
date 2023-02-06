@@ -17,6 +17,9 @@ Vue3 + TS
 ```shell
 1.全局注册的组件无法使用
 解决办法：全局注册的组件用小写字母
+
+2.textarea伪类选择器:focus不起作用
+解决办法：outline: none;
 ```
 
 [VuePress](https://v2.vuepress.vuejs.org/)

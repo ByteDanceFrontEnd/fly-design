@@ -37,3 +37,11 @@ small<br/>
 <input placeholder="Hello" />
 <input placeholder="Hello" size="small" />
 ```
+
+# 文本域
+
+用于输入多行文本信息可缩放的输入框。 添加 `type="textarea"` 属性来将 `input` 元素转换为原生的 `textarea` 元素。
+
+文本域高度可通过 `rows` 属性控制，宽度可用 `cols` 属性控制。
+
+<Input placeholder="Please Input" rows="10" type="textarea" />
