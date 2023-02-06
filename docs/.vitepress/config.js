@@ -7,7 +7,12 @@ export default {
       { text: '指南', link: '/guide/installation' },
       { text: '组件', link: '/componentDocs/Layout/' },
     ],
-    socialLinks: [{ icon: 'github', link: 'https://gitee.com/geeksdidi' }],
+    socialLinks: [
+      {
+        icon: 'github',
+        link: 'https://github.com/ByteDanceFrontEnd/fly-design',
+      },
+    ],
 
     sidebar: {
       '/guide/': [
@@ -29,11 +34,11 @@ export default {
           items: [
             {
               text: '主题',
-              link: '/xx',
+              link: '/guide/title',
             },
             {
               text: '更新日志',
-              link: '/xx',
+              link: '/guide/updatelog',
             },
           ],
         },
@@ -42,15 +47,15 @@ export default {
           items: [
             {
               text: '开发指南',
-              link: '/xx',
+              link: '/guide/developguide',
             },
             {
               text: '开发常见问题',
-              link: '/xx',
+              link: '/guide/developquestion',
             },
             {
               text: '提交示例',
-              link: '/xx',
+              link: '/guide/commitexample',
             },
           ],
         },
