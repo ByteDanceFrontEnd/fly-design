@@ -114,4 +114,4 @@
 ### Slots
 | 插槽名      | 说明         | 子标签       | 
 | --------- | ------------ | ----------- |
-| direction | 自定义默认内容 | Container / Header / Aside / Main / Footer  | 
+| default | 自定义默认内容 | Layout / Header / Aside / Main / Footer  | 

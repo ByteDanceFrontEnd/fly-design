@@ -12,26 +12,26 @@
 
 <script setup lang="ts">
 type InputDProps = {
-  placeholder?: string
-  size?: string
-  showPassword?: boolean
-  prefixIcon?: string
-  suffixIcon?: string
-  type?: string
-  rows?: number
-  cols?: number
-}
+  placeholder?: string;
+  size?: string;
+  showPassword?: boolean;
+  prefixIcon?: string;
+  suffixIcon?: string;
+  type?: string;
+  rows?: number;
+  cols?: number;
+};
 
 withDefaults(defineProps<InputDProps>(), {
-  placeholder: '',
-  size: '',
+  placeholder: "",
+  size: "",
   showPassword: false,
-  prefixIcon: '',
-  suffixIcon: '',
-  type: '',
+  prefixIcon: "",
+  suffixIcon: "",
+  type: "",
   rows: 5,
   cols: 33,
-})
+});
 </script>
 
 <style lang="scss" scoped>
