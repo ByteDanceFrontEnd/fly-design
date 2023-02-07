@@ -16,10 +16,17 @@
           @select-all="selectAll"
         ></ListTitle>
 
+        <!-- <Search
+          :filterable="filterable"
+          leftOrRight="left"
+          @input-change="filterData"
+        ></Search> -->
+
         <!-- 左边 -->
         <div class="itemsWraper">
           <ListItem
-            :data="leftListData"
+            v-model:left-list-data="leftListData"
+            v-model:right-list-data="rightListData"
             :empty-key-words="emptyKeyWords"
             leftOrRight="left"
             :checkedData="checkedData.left"
@@ -53,14 +60,22 @@
           :can-select-list-len="rightListData.length"
           @select-all="selectAll"
         ></ListTitle>
+
+        <!-- <Search
+          :filterable="filterable"
+          leftOrRight="right"
+          @input-change="filterData"
+        ></Search> -->
+
         <!-- 右边 -->
         <div class="itemsWraper">
           <ListItem
             :empty-key-words="emptyKeyWords"
-            :data="rightListData"
+            v-model:left-list-data="leftListData"
+            v-model:right-list-data="rightListData"
+            :filterable="filterable"
             left-or-right="right"
             :checkedData="checkedData.right"
-            :filterable="filterable"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
@@ -76,12 +91,14 @@ import { ITransferItem } from './typings'
 import ListTitle from './components/ListTitle.vue'
 import ButtonGroup from './components/ButtonGroup.vue'
 import ListItem from './components/ListItem.vue'
+import Search from './components/Search.vue'
 import {
   useComputedData,
   useRightList,
   useCheckedData,
   useDragedItem,
   useSelect,
+  useDataFilter,
 } from './extends/hooks'
 
 const props = withDefaults(
@@ -119,6 +136,10 @@ const { leftListData, transferButtonDisabled, leftNoDisabledLen } =
 const { dragedItem, setDragedItem } = useDragedItem()
 
 const { selectAll } = useSelect(leftListData, rightListData, checkedData)
+const { leftFiltedData, rightFiltedData, filterData } = useDataFilter(
+  leftListData,
+  rightListData,
+)
 </script>
 
 <style>

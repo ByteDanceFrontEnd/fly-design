@@ -130,19 +130,20 @@ let list = [
     label: 'Option9 ',
     disabled: false,
   },
+]
+// list = []
+const value = ref([
   {
     id: 10,
     label: 'Option10 ',
-    disabled: true,
+    disabled: false,
   },
   {
     id: 11,
     label: 'Option11 ',
     disabled: true,
   },
-]
-// list = []
-const value = ref([])
+])
 const data = ref(list)
 
 // upload

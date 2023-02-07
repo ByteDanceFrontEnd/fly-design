@@ -220,3 +220,43 @@ export function useSelect(
 
   return { selectAll }
 }
+
+interface IuseDataFilter {
+  leftFiltedData: Ref<ITransferItem[]>
+  rightFiltedData: ITransferItem[]
+  filterData: (leftOrRight: string, keywords: string) => void
+}
+
+export function useDataFilter(
+  leftListData: Ref<ITransferItem[]>,
+  rightListData: Ref<ITransferItem[]>,
+): IuseDataFilter {
+  // 过滤后的数据
+  const leftFiltedData = ref([...leftListData.value])
+  const rightFiltedData = [...rightListData.value]
+
+  function filterData(leftOrRight: string, keywords: string) {
+    if (leftOrRight == 'left') {
+      // console.log(filterList(keywords, leftListData.value))
+      leftFiltedData.value = filterList(keywords, leftListData.value)
+    } else {
+      // console.log('right')
+      rightListData.value = filterList(keywords, rightListData.value)
+    }
+  }
+
+  function filterList(
+    keywords: string,
+    itemList: ITransferItem[],
+  ): ITransferItem[] {
+    return rightFiltedData.filter((item) => {
+      return item.label && item.label.includes(keywords)
+    })
+  }
+
+  return {
+    leftFiltedData,
+    rightFiltedData,
+    filterData,
+  }
+}

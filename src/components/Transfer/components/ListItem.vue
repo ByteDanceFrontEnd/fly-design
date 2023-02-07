@@ -1,6 +1,6 @@
 <template>
   <!-- <slot class="empty-content"> No data </slot> -->
-  <span v-show="data.length == 0" class="empty-content">{{
+  <span v-show="leftListData.length == 0" class="empty-content">{{
     emptyKeyWords
   }}</span>
   <!-- 搜索框 -->
@@ -10,38 +10,79 @@
       type="text"
       placeholder="filter-key-words"
       size="small"
-      @input="inputChange"
+      @input="inputChange($event.target.value)"
     />
   </div>
   <!-- 列表项 -->
-  <div
-    v-for="item in data"
-    :key="item.id"
-    :class="['list-item', item.disabled ? 'disabled' : '']"
-    :draggable="!item.disabled"
-    @dragstart="dragItem(item)"
-  >
-    <input
-      :checked="isChecked(item.id)"
-      type="checkbox"
-      :disabled="item.disabled"
-      :id="'__checkbox__' + item.id"
-      @click="checkboxClick($event.target.checked, leftOrRight as string, item)"
-    />
-    <label
-      :for="'__checkbox__' + item.id"
-      :class="{checkedItem: isChecked(item.id as number)}"
-      >{{ item.label }}</label
+  <!-- 没有找到好办法，只能根据条件控制显隐 -->
+  <template v-if="leftOrRight == 'left'">
+    <div
+      v-for="item in leftListData"
+      :key="item.id"
+      :class="['list-item', item.disabled ? 'disabled' : '']"
+      :draggable="!item.disabled"
+      @dragstart="dragItem(item)"
     >
-  </div>
+      <input
+        :checked="isChecked(item.id)"
+        type="checkbox"
+        :disabled="item.disabled"
+        :id="'__checkbox__' + item.id"
+        @click="
+          checkboxClick($event.target.checked, leftOrRight as string, item)
+        "
+      />
+      <label
+        :for="'__checkbox__' + item.id"
+        :class="{checkedItem: isChecked(item.id as number)}"
+        >{{ item.label }}</label
+      >
+    </div>
+  </template>
+  <template v-else>
+    <div
+      v-for="item in rightListData"
+      :key="item.id"
+      :class="['list-item', item.disabled ? 'disabled' : '']"
+      :draggable="!item.disabled"
+      @dragstart="dragItem(item)"
+    >
+      <input
+        :checked="isChecked(item.id)"
+        type="checkbox"
+        :disabled="item.disabled"
+        :id="'__checkbox__' + item.id"
+        @click="
+          checkboxClick($event.target.checked, leftOrRight as string, item)
+        "
+      />
+      <label
+        :for="'__checkbox__' + item.id"
+        :class="{checkedItem: isChecked(item.id as number)}"
+        >{{ item.label }}</label
+      >
+    </div>
+  </template>
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue'
+import {
+  nextTick,
+  PropType,
+  reactive,
+  computed,
+  onUpdated,
+  watchEffect,
+  watch,
+} from 'vue'
 import { ITransferItem } from '../typings'
 
 const props = defineProps({
-  data: {
+  leftListData: {
+    type: Array as PropType<ITransferItem[]>,
+    default: () => [],
+  },
+  rightListData: {
     type: Array as PropType<ITransferItem[]>,
     default: () => [],
   },
@@ -64,14 +105,58 @@ const props = defineProps({
     default: false,
   },
 })
+// 踩坑：父组件绑定多个v-model的值，再通过计算属性得到其中某一个v-model（引用类型）的复制值。如果此时修改自己定义的复制值，计算属性会更新，但watch监听不到，视图也不会进行更新
+// let staticLeftList = reactive([...props.leftListData])
+// let staticRightList = reactive([...props.rightListData])
+// 避免直接修改props的值
+let cloneLeftList = reactive([...props.leftListData])
+let cloneRightList = reactive([...props.rightListData])
+// 每次移动item更新值
+onUpdated((): void => {
+  cloneLeftList = reactive([...props.leftListData])
+  cloneRightList = reactive([...props.rightListData])
+})
 
-const emit = defineEmits(['checkboxClick', 'dragItem'])
+// let propsData = reactive([...props.data])
+// watchEffect(() => {
+//   console.log(listData)
+// })
+// 更新cloneLeftList、cloneRightList后需要监听变化
+// watch(
+//   cloneLeftList,
+//   (newVal) => {
+//     console.log(listData, 222)
+//   },
+//   { deep: true },
+// )
+const emit = defineEmits([
+  'checkboxClick',
+  'dragItem',
+  'update:leftListData',
+  'update:rightListData',
+])
 
 const isChecked = (id: number) => {
   return props.checkedData.find((item) => item.id == id)
 }
-const inputChange = () => {
-  console.log(111)
+const inputChange = (value: string) => {
+  console.log(value)
+  let list = null
+
+  if (props.leftOrRight == 'left') {
+    list = cloneLeftList.filter((item) => {
+      return item.label?.includes(value)
+    })
+    emit('update:leftListData', list)
+  } else {
+    list = cloneRightList.filter((item) => {
+      return item.label?.includes(value)
+    })
+    emit('update:rightListData', list)
+  }
+  // listData.value = listData.value.filter((item) => {
+  //   return item.label?.includes(value)
+  // })
 }
 
 const checkboxClick = (
