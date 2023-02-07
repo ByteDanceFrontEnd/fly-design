@@ -2,6 +2,7 @@
 :root{
     --vp-c-green: #409eff;
     --vp-c-bg-alt: #ffffff;
+    --vp-c-green-dark: #14cfff;
 }
 .dark{
     --vp-c-bg-alt: #161618;
