@@ -12,26 +12,26 @@
 
 <script setup lang="ts">
 type InputDProps = {
-  placeholder?: string;
-  size?: string;
-  showPassword?: boolean;
-  prefixIcon?: string;
-  suffixIcon?: string;
-  type?: string;
-  rows?: number;
-  cols?: number;
-};
+  placeholder?: string
+  size?: string
+  showPassword?: boolean
+  prefixIcon?: string
+  suffixIcon?: string
+  type?: string
+  rows?: number
+  cols?: number
+}
 
 withDefaults(defineProps<InputDProps>(), {
-  placeholder: "",
-  size: "",
+  placeholder: '',
+  size: '',
   showPassword: false,
-  prefixIcon: "",
-  suffixIcon: "",
-  type: "",
+  prefixIcon: '',
+  suffixIcon: '',
+  type: '',
   rows: 5,
   cols: 33,
-});
+})
 </script>
 
 <style lang="scss" scoped>
@@ -53,6 +53,7 @@ div {
 }
 
 textarea {
+  border: 1px solid rgb(133, 133, 133);
   border-radius: 5px;
   padding: 5px 11px;
   outline: none;
