@@ -1,6 +1,13 @@
 <template>
+  <!-- 图片预览区域 -->
+  <ul class="preview-images-list">
+    <li v-for="(file, index) in tempImages" :key="index">
+      <img :src="file.url" alt="" />
+    </li>
+  </ul>
   <div class="fly-uplouder-wrapper">
     <div class="fly-uploader-imagelist">
+      <!-- 上传主体区域 -->
       <div
         class="fly-uploader-container"
         @click="(event) => handleFileUploader(event, 'click')"
