@@ -45,3 +45,15 @@ small<br/>
 文本域高度可通过 `rows` 属性控制，宽度可用 `cols` 属性控制。
 
 <Input placeholder="Please Input" rows="10" type="textarea" />
+
+```html
+<input placeholder="Please Input" rows="10" type="textarea" />
+```
+
+## 搜索框
+
+<Input placeholder="input search text" type="search" :fn="fun" />
+
+```
+<Input placeholder="input search text" type="search" :fn="fun" />
+```

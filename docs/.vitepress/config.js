@@ -149,7 +149,7 @@ export default {
             },
             {
               text: 'Card 卡片',
-              link: '/componentDocs/Card',
+              link: '/componentDocs/Card/',
             },
           ],
         },

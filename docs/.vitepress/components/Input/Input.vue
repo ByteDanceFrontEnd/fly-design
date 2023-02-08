@@ -8,6 +8,10 @@
       :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
     />
   </div>
+  <div v-if="type == 'search'">
+    <input :placeholder="placeholder" class="input-search" />
+    <button>Search</button>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -38,9 +42,10 @@ withDefaults(defineProps<InputDProps>(), {
 input {
   height: 32px;
   padding: 4px 11px;
-  border-width: 1px;
+  border: 1px solid #d9d9d9;
   border-style: solid;
   border-radius: 6px;
+  vertical-align: top;
 }
 
 input:focus {
@@ -48,12 +53,22 @@ input:focus {
   border-inline-end-width: 1px;
 }
 
+input::-webkit-input-placeholder {
+  color: #d9d9d9;
+  font-weight: 100;
+}
+
+.input-search {
+  border-radius: 6px 0 0 6px;
+  height: 42px;
+}
+
 div {
   display: inline-block;
 }
 
 textarea {
-  border: 1px solid rgb(133, 133, 133);
+  border: 1px solid #d9d9d9;
   border-radius: 5px;
   padding: 5px 11px;
   outline: none;
@@ -67,5 +82,20 @@ textarea:hover {
 textarea:focus {
   border-color: #4096ff;
   border-inline-end-width: 1px;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #d9d9d9;
+  font-weight: 500;
+}
+
+button {
+  height: 42px;
+  background-color: #1677ff;
+  color: white;
+  border: none;
+  vertical-align: top;
+  border-radius: 0 6px 6px 0;
+  padding: 1px 6px 1px 6px;
 }
 </style>
