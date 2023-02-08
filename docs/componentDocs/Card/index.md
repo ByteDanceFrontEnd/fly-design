@@ -9,7 +9,7 @@
 ### 代码
 
 ```html
-<card imgSrc="/logo.png" summary="Vue组件库" />
+<Card imgSrc="/logo.png" summary="Vue组件库" />
 ```
 
 ### Attributes

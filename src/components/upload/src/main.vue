@@ -3,9 +3,17 @@
   <ul class="preview-images-list">
     <li v-for="(file, index) in tempImages" :key="index">
       <img :src="file.url" alt="" />
+      <span class="preview-delete-icon">
+        <img src="../static/删除.svg" @click="deleteImage(index)" />
+      </span>
     </li>
   </ul>
-  <div class="fly-uplouder-wrapper">
+  <div
+    class="fly-uplouder-wrapper"
+    @drop="(event) => handleFileUploader(event, 'drop')"
+    @dragover="prevent"
+    @dragenter="prevent"
+  >
     <div class="fly-uploader-imagelist">
       <!-- 上传主体区域 -->
       <div
@@ -42,6 +50,9 @@ const props = defineProps({
   size: {
     type: Number,
   },
+  limit: {
+    type: Number,
+  },
   onSuccess: {
     type: Function,
   },
@@ -61,9 +72,18 @@ function handleFileUploader(event, type) {
       // console.log(event.target.files)
       sourceFiles.value.push(event.target.files)
     },
+    drop: (event) => {
+      event.preventDefault()
+      console.log(event.dataTransfer.files)
+      sourceFiles.value.push(event.dataTransfer.files)
+    },
   })
 
   handler[type](event)
+}
+
+function prevent(event) {
+  event.preventDefault()
 }
 
 //上传图片blob和base64格式
@@ -102,7 +122,7 @@ function createBase64Image(files) {
   let files_promises = files.map(handleFile)
 
   Promise.all(files_promises).then((results) => {
-    this.tempImages = results.map((res, index) => {
+    tempImages.value = results.map((res, index) => {
       return {
         url: res,
         file: files[index],
@@ -111,9 +131,15 @@ function createBase64Image(files) {
   })
 }
 
+function deleteImage(index) {
+  tempImages.value.splice(index, 1)
+  sourceFiles.value.splice(index, 1)
+}
+
 watch(sourceFiles.value, (value) => {
   let files = Array.from(value)
-  const { size, accept, onError } = toRefs(props)
+  console.log(sourceFiles.value)
+  const { size, accept, onError, limit } = toRefs(props)
 
   // 文件校验
   if (files.length <= 0) return
@@ -122,6 +148,10 @@ watch(sourceFiles.value, (value) => {
   }
   if (files.some((file) => !accept.value.split(' ').indexOf(file[0].type))) {
     return onError.value(`只接受${accept.value}类型的文件`)
+  }
+  if (sourceFiles.value.length > limit.value) {
+    sourceFiles.value.pop()
+    return onError.value(`最多上传${limit.value}个图片`)
   }
 
   // 处理图片文件
