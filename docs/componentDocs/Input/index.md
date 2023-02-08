@@ -52,6 +52,8 @@ small<br/>
 
 ## 搜索框
 
+通过`type="search"`属性来将`input`元素转换为搜索框。
+
 <Input placeholder="input search text" type="search" :fn="fun" />
 
 ```
