@@ -5,7 +5,7 @@ export default {
     logo: '/logo.png',
     nav: [
       { text: '指南', link: '/guide/installation' },
-      { text: '组件', link: '/componentDocs/Layout/' },
+      { text: '组件', link: '/componentDocs/OverView/' },
     ],
     socialLinks: [
       {
@@ -61,6 +61,15 @@ export default {
         },
       ],
       '/componentDocs/': [
+        {
+          text: '组件库',
+          items: [
+            {
+              text: '组件总览',
+              link: '/componentDocs/OverView/',
+            },
+          ],
+        },
         {
           text: '基础',
           items: [
@@ -140,7 +149,7 @@ export default {
             },
             {
               text: 'Card 卡片',
-              link: '/componentDocs/Card',
+              link: '/componentDocs/Card/',
             },
           ],
         },

@@ -14,17 +14,18 @@ Fly-Design 目前还在开发迭代中
 
 # 选择一个你喜欢的包管理器
 
-# NPM
+## NPM
+
 $ npm install Fly-Design --save
 
-# Yarn
+## Yarn
+
 $ yarn add Fly-Design
 
-# pnpm
+## pnpm
+
 $ pnpm install Fly-Design
 
 ## 浏览器直接引入
 
 暂不支持
-
-

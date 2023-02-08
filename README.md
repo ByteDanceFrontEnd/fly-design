@@ -1,6 +1,9 @@
 # Fly Design
 
-![](public/favicon.ico)
+<p align="center">
+  <img height="160px" src="public/favicon.ico">
+  <h2 align="center" style="font-weight: 600">Fly Design</h2>
+</p>
 
 `flyd` 为 Web 应用提供了丰富的基础 UI 组件，我们还将持续探索企业级应用的最佳 UI 实践。
 

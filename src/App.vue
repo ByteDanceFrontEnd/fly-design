@@ -22,6 +22,8 @@
     <Input placeholder="Hello" size="small" />
     <br /><br />
     <Input placeholder="Please Input" rows="10" type="textarea" />
+    <br /><br />
+    <Input placeholder="input search text" type="search" :fn="fun" />
   </div>
 
   <!-- Button -->
@@ -154,6 +156,10 @@ function uploadSuccess() {
 }
 function uploadError(msg) {
   alert(msg)
+}
+
+function fun() {
+  console.log('123')
 }
 </script>
 
