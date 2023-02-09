@@ -72,6 +72,7 @@
     class="uploader-area"
     accept="images/png images/jpeg"
     :size="1920 * 1080"
+    :limit="3"
     :on-success="uploadSuccess"
     :on-error="uploadError"
   >
