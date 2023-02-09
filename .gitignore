@@ -3,7 +3,7 @@ node_modules
 /dist
 .cache
 .temp
-docs/.vuepress/dist
+docs/.vitepress/dist
 docs/.vitepress/cache
 
 cache
