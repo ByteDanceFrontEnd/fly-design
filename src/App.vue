@@ -24,6 +24,8 @@
     <Input placeholder="Please Input" rows="10" type="textarea" />
     <br /><br />
     <Input placeholder="input search text" type="search" :fn="fun" />
+    <br /><br />
+    <Input placeholder="input search text" type="cache-search" />
   </div>
 
   <!-- Button -->
@@ -72,6 +74,7 @@
     class="uploader-area"
     accept="images/png images/jpeg"
     :size="1920 * 1080"
+    :limit="3"
     :on-success="uploadSuccess"
     :on-error="uploadError"
   >
