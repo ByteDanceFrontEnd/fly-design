@@ -1,7 +1,7 @@
 <template>
   <!-- 搜索框 -->
   <div class="search" v-if="filterable">
-    <svg-icon name="search" color="#c7c7c7" />
+    <!-- <svg-icon name="search" color="#c7c7c7" /> -->
     <input
       type="text"
       placeholder="filter-key-words"

@@ -15,11 +15,17 @@
   ></Transfer>
 
   <!-- Input -->
-  <Input placeholder="Hello" size="large" />
-  <br /><br />
-  <Input placeholder="Hello" />
-  <br /><br />
-  <Input placeholder="Hello" size="small" />
+  <div class="myInput">
+    <Input placeholder="Hello" size="large" />
+    <br /><br />
+    <Input placeholder="Hello" />
+    <br /><br />
+    <Input placeholder="Hello" size="small" />
+    <br /><br />
+    <Input placeholder="Please Input" rows="10" type="textarea" />
+    <br /><br />
+    <Input placeholder="input search text" type="search" :fn="fun" />
+  </div>
 
   <!-- Button -->
   <div>
@@ -153,9 +159,13 @@ function uploadSuccess() {
 function uploadError(msg) {
   alert(msg)
 }
+
+function fun() {
+  console.log('123')
+}
 </script>
 
-<style>
+<style lang="scss">
 .app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -169,5 +179,8 @@ function uploadError(msg) {
   width: 1000px;
   color: white;
   text-align: center;
+}
+.myInput {
+  margin-left: 20px;
 }
 </style>

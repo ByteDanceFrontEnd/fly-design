@@ -10,12 +10,12 @@
   </div>
   <div v-if="type == 'search'">
     <input :placeholder="placeholder" class="input-search" />
-    <button @click="fn">Search</button>
+    <button>Search</button>
   </div>
 </template>
 
 <script setup lang="ts">
-type InputProps = {
+type InputDProps = {
   placeholder?: string
   size?: string
   showPassword?: boolean
@@ -24,10 +24,9 @@ type InputProps = {
   type?: string
   rows?: number
   cols?: number
-  fn?: any
 }
 
-withDefaults(defineProps<InputProps>(), {
+withDefaults(defineProps<InputDProps>(), {
   placeholder: '',
   size: '',
   showPassword: false,
@@ -61,9 +60,10 @@ input::-webkit-input-placeholder {
 
 .input-search {
   border-radius: 6px 0 0 6px;
-  height: 32px;
+  height: 42px;
 }
 
+=======
 div {
   display: inline-block;
 }
@@ -97,5 +97,6 @@ button {
   border: none;
   vertical-align: top;
   border-radius: 0 6px 6px 0;
+  padding: 1px 6px 1px 6px;
 }
 </style>
