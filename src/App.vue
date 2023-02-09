@@ -24,6 +24,8 @@
     <Input placeholder="Please Input" rows="10" type="textarea" />
     <br /><br />
     <Input placeholder="input search text" type="search" :fn="fun" />
+    <br /><br />
+    <Input placeholder="input search text" type="cache-search" />
   </div>
 
   <!-- Button -->

@@ -3,9 +3,6 @@
     --vp-c-green: #409eff;
     --vp-c-bg-alt: #ffffff;
     --vp-c-green-dark: #14cfff;
-    --vp-home-hero-image-background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
-    --vp-home-hero-image-filter: blur(175px);
-    --vp-code-block-bg: rgba(40,44,52);
 }
 
 .dark{
@@ -41,3 +38,4 @@
   border-radius: var(--scrollbar-track-radius, 10px);
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   background: var(--scrollbar-track-bgColor, rgba(255, 255, 255, 1));
+}
