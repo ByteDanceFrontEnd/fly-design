@@ -170,7 +170,9 @@ const { leftFiltedData, rightFiltedData, filterData } = useDataFilter(
 .transfer {
   display: flex;
   height: var(--Transfer-height);
-  width: 560px;
+  width: 600px;
+  // box-sizing: border-box;
+  // border: 20px solid;
   justify-content: space-between;
   align-items: center;
   padding: 20px;

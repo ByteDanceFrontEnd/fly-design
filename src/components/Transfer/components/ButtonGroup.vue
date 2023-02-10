@@ -1,10 +1,10 @@
 <template>
   <div class="box button-group">
     <button :disabled="leftButtonDisabled" @click="leftButtonClick">
-      &lt;{{ buttonTexts[0] }}
+      <span>&lt;{{ buttonTexts[0] }}</span>
     </button>
     <button :disabled="rightButtonDisabled" @click="rightButtonClick">
-      {{ buttonTexts[1] }}&gt;
+      <span>{{ buttonTexts[1] }}&gt;</span>
     </button>
   </div>
 </template>
@@ -54,6 +54,7 @@ const rightButtonClick = (): void => {
       color: #fff;
       border-radius: 5px;
       font-size: 14px;
+      padding: 4px;
 
       &:nth-child(2) {
         margin-left: 10px;

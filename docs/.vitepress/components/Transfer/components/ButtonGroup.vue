@@ -1,10 +1,10 @@
 <template>
   <div class="box button-group">
     <button :disabled="leftButtonDisabled" @click="leftButtonClick">
-      &lt;
+      <span>&lt;{{ buttonTexts[0] }}</span>
     </button>
     <button :disabled="rightButtonDisabled" @click="rightButtonClick">
-      &gt;
+      <span>{{ buttonTexts[1] }}&gt;</span>
     </button>
   </div>
 </template>
@@ -13,6 +13,7 @@
 interface IProps {
   leftButtonDisabled: boolean
   rightButtonDisabled: boolean
+  buttonTexts: string[]
 }
 interface IEmits {
   (e: 'leftButtonClick'): void
@@ -36,16 +37,16 @@ const rightButtonClick = (): void => {
 
 <style lang="scss" scoped>
 .box {
-  width: 100px;
   height: 100%;
-
+ 
   &.button-group {
     display: flex;
     justify-content: center;
     align-items: center;
 
     button {
-      width: 46px;
+      cursor: pointer;
+      min-width: 40px;
       height: 32px;
       background-color: var(--Trasfer-item-bg);
       outline: none;
@@ -53,6 +54,7 @@ const rightButtonClick = (): void => {
       color: #fff;
       border-radius: 5px;
       font-size: 14px;
+      padding: 4px;
 
       &:nth-child(2) {
         margin-left: 10px;

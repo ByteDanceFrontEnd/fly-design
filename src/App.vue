@@ -9,7 +9,7 @@
     :data="data"
     :titles="['左边', '右边']"
     empty-key-words="没有数据"
-    :button-texts="['To left', 'To right']"
+    :button-texts="['To Left', 'ToRight']"
     :filterable="true"
     v-model="value"
     @change="chenge"

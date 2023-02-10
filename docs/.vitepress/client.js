@@ -8,6 +8,7 @@ import Sider from './components/Layout/Sider.vue'
 import Content from './components/Layout/Content.vue'
 import Footer from './components/Layout/Footer.vue'
 import Upload from './components/upload/upload.vue'
+import Demo from './components/Demo/Demo.vue'
 
 export default [
   ['Card', Card],
@@ -19,4 +20,5 @@ export default [
   ['Contents', Content],
   ['Footer', Footer],
   ['Upload', Upload],
+  ['Demo', Demo],
 ]
