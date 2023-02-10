@@ -33,6 +33,7 @@ function inputChange(value: string) {
 <style scoped lang="scss">
 .search {
   width: 90%;
+  height: 30px;
   margin: 10px auto;
   display: flex;
   justify-content: center;
@@ -41,11 +42,12 @@ function inputChange(value: string) {
   border-radius: 5px;
   input {
     width: 70%;
-    height: 40%;
+    height: 60%;
     border: none;
     font-size: 14px;
     &::placeholder {
       font-size: 14px;
+      color: #bcbaba;
     }
   }
 }

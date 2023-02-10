@@ -63,7 +63,6 @@ input::-webkit-input-placeholder {
   height: 42px;
 }
 
-=======
 div {
   display: inline-block;
 }

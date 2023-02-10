@@ -151,7 +151,7 @@ const { selectAll } = useSelect(leftListData, rightListData, checkedData)
         /*滚动条里面小方块*/
         border-radius: 5px;
         -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-        background: rgba(191, 191, 191, 0.2);
+        background: rgba(224, 4, 4, 0.2);
       }
 
       &::-webkit-scrollbar-track {

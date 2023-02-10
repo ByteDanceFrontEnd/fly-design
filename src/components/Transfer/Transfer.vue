@@ -7,7 +7,7 @@
         @dragover.prevent
       >
         <ListTitle
-          :title="leftTitle"
+          :title="titles[0]"
           :showCount="showCount"
           :checkedCount="checkedData.left.length"
           :all-count="leftListData.length"
@@ -16,11 +16,11 @@
           @select-all="selectAll"
         ></ListTitle>
 
-        <!-- <Search
+        <Search
           :filterable="filterable"
           leftOrRight="left"
           @input-change="filterData"
-        ></Search> -->
+        ></Search>
 
         <!-- 左边 -->
         <div class="itemsWraper">
@@ -30,10 +30,12 @@
             :empty-key-words="emptyKeyWords"
             leftOrRight="left"
             :checkedData="checkedData.left"
-            :filterable="filterable"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
+        </div>
+        <div v-if="slots['left-footer']" class="slot left-footer">
+          <slot name="left-footer"></slot>
         </div>
       </div>
 
@@ -41,6 +43,7 @@
         <ButtonGroup
           :left-button-disabled="transferButtonDisabled.left"
           :right-button-disabled="transferButtonDisabled.right"
+          :button-texts="buttonTexts"
           @left-button-click="removeRightListData(checkedData.right)"
           @right-button-click="addRightListData(checkedData.left)"
         ></ButtonGroup>
@@ -52,7 +55,7 @@
         @dragover.prevent
       >
         <ListTitle
-          :title="rightTitle"
+          :title="titles[1]"
           :showCount="showCount"
           :checkedCount="checkedData.right.length"
           :all-count="rightListData.length"
@@ -61,11 +64,11 @@
           @select-all="selectAll"
         ></ListTitle>
 
-        <!-- <Search
+        <Search
           :filterable="filterable"
           leftOrRight="right"
           @input-change="filterData"
-        ></Search> -->
+        ></Search>
 
         <!-- 右边 -->
         <div class="itemsWraper">
@@ -73,12 +76,14 @@
             :empty-key-words="emptyKeyWords"
             v-model:left-list-data="leftListData"
             v-model:right-list-data="rightListData"
-            :filterable="filterable"
             left-or-right="right"
             :checkedData="checkedData.right"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
+        </div>
+        <div v-if="slots['right-footer']" class="slot right-footer">
+          <slot name="right-footer"></slot>
         </div>
       </div>
     </div>
@@ -86,7 +91,7 @@
 </template>
 
 <script setup lang="ts">
-import { withDefaults, reactive } from 'vue'
+import { withDefaults, reactive, useSlots, computed } from 'vue'
 import { ITransferItem } from './typings'
 import ListTitle from './components/ListTitle.vue'
 import ButtonGroup from './components/ButtonGroup.vue'
@@ -100,31 +105,41 @@ import {
   useSelect,
   useDataFilter,
 } from './extends/hooks'
+const slots = useSlots()
+console.log(slots)
 
 const props = withDefaults(
   defineProps<{
     data?: ITransferItem[]
-    rightTitle?: string
-    leftTitle?: string
+    titles?: string[]
     emptyKeyWords?: string
     modelValue?: ITransferItem[]
     showCount?: boolean
     filterable?: boolean
+    buttonTexts?: string[]
   }>(),
   {
     data: () => [],
-    rightTitle: 'List2',
-    leftTitle: 'List1',
+    titles: () => ['List1', 'List2'],
     emptyKeyWords: 'No data',
     modelValue: () => [],
     showCount: true,
     filterable: false,
+    buttonTexts: () => ['', ''],
   },
 )
 const emits = defineEmits<{
   (e: 'update:modelValue'): void
+  (
+    e: 'change',
+    nowArr: ITransferItem[],
+    leftOrRight: string,
+    moveArr: ITransferItem[],
+  ): void
+  (e: 'left-check-change'): void
+  (e: 'right-check-change'): void
 }>()
-const { checkedData, setCheckedData } = useCheckedData()
+const { checkedData, setCheckedData } = useCheckedData(emits)
 const { rightListData, addRightListData, removeRightListData } = useRightList(
   [],
   checkedData,
@@ -161,10 +176,11 @@ const { leftFiltedData, rightFiltedData, filterData } = useDataFilter(
   padding: 20px;
   .box {
     height: 100%;
-
+    position: relative;
     .itemsWraper {
       overflow: auto;
       height: calc(var(--Transfer-height) - 32px);
+      // height: ;
       position: relative;
 
       &::-webkit-scrollbar {
@@ -186,6 +202,17 @@ const { leftFiltedData, rightFiltedData, filterData } = useDataFilter(
         border-radius: 0;
         background: rgba(0, 0, 0, 0);
       }
+    }
+    .slot {
+      position: absolute;
+      width: 100%;
+      height: 35px;
+      bottom: 0;
+      line-height: 35px;
+      padding-left: 15px;
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      // color: red;
     }
   }
   .left-list,

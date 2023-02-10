@@ -1,6 +1,6 @@
 <template>
   <!-- <slot class="empty-content"> No data </slot> -->
-  <span v-show="leftListData.length == 0" class="empty-content">{{
+  <span v-show="listData.length == 0" class="empty-content">{{
     emptyKeyWords
   }}</span>
   <!-- 搜索框 -->
@@ -105,9 +105,15 @@ const props = defineProps({
     default: false,
   },
 })
+let listData = computed(() => {
+  if (props.leftOrRight == 'left') {
+    return props.leftListData
+  } else {
+    return props.rightListData
+  }
+})
 // 踩坑：父组件绑定多个v-model的值，再通过计算属性得到其中某一个v-model（引用类型）的复制值。如果此时修改自己定义的复制值，计算属性会更新，但watch监听不到，视图也不会进行更新
 // let staticLeftList = reactive([...props.leftListData])
-// let staticRightList = reactive([...props.rightListData])
 // 避免直接修改props的值
 let cloneLeftList = reactive([...props.leftListData])
 let cloneRightList = reactive([...props.rightListData])
@@ -196,6 +202,7 @@ const dragItem = (item: ITransferItem) => {
     top: 8px;
     width: 14px;
     height: 14px;
+    cursor: pointer;
   }
 
   label {
@@ -203,6 +210,7 @@ const dragItem = (item: ITransferItem) => {
     display: block;
     height: 100%;
     user-select: none;
+    cursor: pointer;
 
     &.checkedItem {
       color: var(--Trasfer-item-bg);
