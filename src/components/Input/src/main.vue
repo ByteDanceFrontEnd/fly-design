@@ -40,6 +40,18 @@
       </div>
     </div>
   </div>
+  <div v-if="type === 'password'" class="password">
+    <input
+      class="password-input"
+      :placeholder="placeholder"
+      @blur="inputBlur"
+      @focus="inputFocus"
+      id="password-input"
+    />
+    <span id="password-span" class="password-span-blur">
+      <img @click="changeImg" :src="require(imgSrc + '')" />
+    </span>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -71,6 +83,7 @@ withDefaults(defineProps<InputProps>(), {
 const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
+const imgSrc = ref<string>('./image/eye.png')
 
 function blurChange() {
   setTimeout(() => {
@@ -122,6 +135,37 @@ function addItem() {
 
 function changeItem(value: string) {
   inputValue.value = value
+}
+
+function inputBlur() {
+  const spanElement = document.getElementById('password-span')
+  if (spanElement) {
+    spanElement.className = 'password-span-blur'
+  }
+  // console.log(blur)
+}
+
+function inputFocus() {
+  const spanElement = document.getElementById('password-span')
+  if (spanElement) {
+    spanElement.className = 'password-span-focus'
+  }
+  // console.log(focus)
+}
+
+function changeImg() {
+  const inputElement = document.getElementById('password-input')
+  if (imgSrc.value === './image/eye.png') {
+    imgSrc.value = './image/eye-close.png'
+    if (inputElement) {
+      inputElement.type = 'password'
+    }
+  } else {
+    imgSrc.value = './image/eye.png'
+    if (inputElement) {
+      inputElement.type = 'text'
+    }
+  }
 }
 </script>
 
@@ -244,5 +288,36 @@ button {
 
 .cache-search button {
   height: 36px;
+}
+
+.password {
+  &-input {
+    height: 26px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 6px 0 0 6px;
+    border-right: none;
+  }
+  &-span {
+    &-blur {
+      padding: 6px 10px 6px 10px;
+      border-radius: 0 6px 6px 0;
+      display: inline-block;
+      vertical-align: middle;
+      border: 1px solid #d9d9d9;
+      border-left: none;
+    }
+    &-focus {
+      padding: 6px 10px 6px 10px;
+      border-radius: 0 6px 6px 0;
+      display: inline-block;
+      vertical-align: middle;
+      border: 1px solid #4096ff;
+      border-left: none;
+    }
+  }
+  img {
+    height: 18px;
+  }
 }
 </style>
