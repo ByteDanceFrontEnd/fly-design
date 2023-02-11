@@ -10,7 +10,7 @@
     :titles="['左边', '右边']"
     empty-key-words="没有数据"
     :button-texts="['To Left', 'ToRight']"
-    :filterable="true"
+    filterable
     v-model="value"
     @change="chenge"
     @left-check-change="leftCheckChange"
