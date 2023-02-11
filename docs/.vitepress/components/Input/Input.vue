@@ -8,7 +8,7 @@
       :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
     />
   </div>
-  <div v-if="type == 'search'">
+  <div v-if="type === 'search'">
     <input :placeholder="placeholder" class="input-search" />
     <button>Search</button>
   </div>
