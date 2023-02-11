@@ -27,7 +27,7 @@
     <br /><br />
     <Input placeholder="input search text" type="cache-search" />
     <br /><br />
-    <Input placeholder="input search text" type="password" />
+    <Input placeholder="please input password" type="password" />
   </div>
 
   <!-- Button -->

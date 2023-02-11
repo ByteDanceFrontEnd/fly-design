@@ -9,7 +9,7 @@
 
 ## 📃 文档地址
 
-[https://pcjmy.gitee.io/](https://pcjmy.gitee.io/)
+[https://pcjmy.gitee.io](https://pcjmy.gitee.io)
 
 ## ✨ 亮点
 

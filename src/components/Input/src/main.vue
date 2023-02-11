@@ -298,6 +298,9 @@ button {
     border-radius: 6px 0 0 6px;
     border-right: none;
   }
+  &-input::placeholder {
+    font-size: 14px;
+  }
   &-span {
     &-blur {
       padding: 6px 10px 6px 10px;
