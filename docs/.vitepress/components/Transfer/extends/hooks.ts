@@ -12,7 +12,23 @@ interface IcheckedData {
   right: ITransferItem[]
 }
 interface IEmitModel {
-  (e: 'update:modelValue', args: ITransferItem[]): void
+  (e: 'update:modelValue', newVal: ITransferItem[]): void
+  (
+    e: 'change',
+    nowArr: ITransferItem[],
+    leftOrRight: string,
+    moveArr: ITransferItem[],
+  ): void
+  (
+    e: 'left-check-change',
+    checkedArr: ITransferItem[],
+    changedItemId: number,
+  ): void
+  (
+    e: 'right-check-change',
+    checkedArr: ITransferItem[],
+    changedItemId: number,
+  ): void
 }
 
 export function useRightList(
@@ -30,11 +46,14 @@ export function useRightList(
         rightListData.value.push(newItem)
       }
     })
+    emits('change', rightListData.value, 'right', newData)
 
     checkedData.left = []
   }
 
   function removeRightListData(removeData: ITransferItem[]): void {
+    // console.log(removeData)
+
     rightListData.value = rightListData.value.filter((item) => {
       if (removeData.find((rItem) => rItem.id == item.id)) {
         return false
@@ -42,6 +61,7 @@ export function useRightList(
         return true
       }
     })
+    emits('change', rightListData.value, 'left', removeData)
 
     checkedData.right = []
   }
@@ -107,7 +127,7 @@ interface IuseCheckedData {
   ) => void
 }
 
-export function useCheckedData(): IuseCheckedData {
+export function useCheckedData(emits: IEmitModel): IuseCheckedData {
   const checkedData: IcheckedData = reactive({
     left: [],
     right: [],
@@ -117,9 +137,11 @@ export function useCheckedData(): IuseCheckedData {
     switch (leftOrRight) {
       case 'left':
         checkedData.left.push(item)
+        emits('left-check-change', checkedData.left, item.id)
         break
       case 'right':
         checkedData.right.push(item)
+        emits('right-check-change', checkedData.right, item.id)
         break
       default:
         break
@@ -130,9 +152,11 @@ export function useCheckedData(): IuseCheckedData {
     switch (leftOrRight) {
       case 'left':
         checkedData.left = checkedData.left.filter((item) => item.id !== id)
+        emits('left-check-change', checkedData.left, id)
         break
       case 'right':
         checkedData.right = checkedData.right.filter((item) => item.id !== id)
+        emits('right-check-change', checkedData.right, id)
         break
       default:
         break
@@ -158,7 +182,7 @@ interface IuseDragedItem {
 }
 
 export function useDragedItem(): IuseDragedItem {
-  const dragedItem = ref({})
+  const dragedItem = ref({ id: 0, label: '', disabled: false })
 
   function setDragedItem(item: ITransferItem) {
     ;(dragedItem.value as unknown) = item
@@ -219,4 +243,44 @@ export function useSelect(
   }
 
   return { selectAll }
+}
+
+interface IuseDataFilter {
+  leftFiltedData: Ref<ITransferItem[]>
+  rightFiltedData: ITransferItem[]
+  filterData: (leftOrRight: string, keywords: string) => void
+}
+
+export function useDataFilter(
+  leftListData: Ref<ITransferItem[]>,
+  rightListData: Ref<ITransferItem[]>,
+): IuseDataFilter {
+  // 过滤后的数据
+  const leftFiltedData = ref([...leftListData.value])
+  const rightFiltedData = [...rightListData.value]
+
+  function filterData(leftOrRight: string, keywords: string) {
+    if (leftOrRight == 'left') {
+      // console.log(filterList(keywords, leftListData.value))
+      leftFiltedData.value = filterList(keywords, leftListData.value)
+    } else {
+      // console.log('right')
+      rightListData.value = filterList(keywords, rightListData.value)
+    }
+  }
+
+  function filterList(
+    keywords: string,
+    itemList: ITransferItem[],
+  ): ITransferItem[] {
+    return rightFiltedData.filter((item) => {
+      return item.label && item.label.includes(keywords)
+    })
+  }
+
+  return {
+    leftFiltedData,
+    rightFiltedData,
+    filterData,
+  }
 }

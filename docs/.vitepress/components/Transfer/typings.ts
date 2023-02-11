@@ -1,5 +1,5 @@
 interface ITransferItem {
-  id?: number
+  id: number
   label?: string
   disabled?: boolean
 }
