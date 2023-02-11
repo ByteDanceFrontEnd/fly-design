@@ -1,16 +1,28 @@
 <template>
-  <div v-if="type === 'textarea'">
-    <textarea :placeholder="placeholder" :rows="rows" :cols="cols" />
-  </div>
   <div v-if="!type">
     <input
       :placeholder="placeholder"
       :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
     />
   </div>
+  <div v-if="type === 'textarea'">
+    <textarea :placeholder="placeholder" :rows="rows" :cols="cols" />
+  </div>
   <div v-if="type == 'search'">
     <input :placeholder="placeholder" class="input-search" />
     <button @click="fn">Search</button>
+  </div>
+  <div v-if="type === 'password'" class="password">
+    <input
+      class="password-input"
+      :placeholder="placeholder"
+      @blur="inputBlur"
+      @focus="inputFocus"
+      id="password-input"
+    />
+    <span id="password-span" class="password-span-blur">
+      <img @click="changeImg" :src="require(imgSrc + '')" />
+    </span>
   </div>
   <div v-if="type === 'cache-search'" class="cache-search">
     <input
@@ -39,18 +51,6 @@
         {{ item }}
       </div>
     </div>
-  </div>
-  <div v-if="type === 'password'" class="password">
-    <input
-      class="password-input"
-      :placeholder="placeholder"
-      @blur="inputBlur"
-      @focus="inputFocus"
-      id="password-input"
-    />
-    <span id="password-span" class="password-span-blur">
-      <img @click="changeImg" :src="require(imgSrc + '')" />
-    </span>
   </div>
 </template>
 
@@ -117,11 +117,16 @@ function clearHistory() {
 
 function addItem() {
   // console.log(inputValue.value)
-  let item: any = []
-  item = localStorage.getItem('SearchHistory')
-    ? localStorage.getItem('SearchHistory')?.split(',')
-    : []
-  let str: string = inputValue.value
+  let item: string[]
+  const temp: string | null = localStorage.getItem('SearchHistory')
+    ? localStorage.getItem('SearchHistory')
+    : null
+  if (temp) {
+    item = temp.split(',')
+  } else {
+    item = []
+  }
+  const str: string = inputValue.value
   if (str.length > 0 && !item.includes(str)) {
     item.push(str)
   }
@@ -154,7 +159,9 @@ function inputFocus() {
 }
 
 function changeImg() {
-  const inputElement = document.getElementById('password-input')
+  const inputElement = document.getElementById(
+    'password-input',
+  ) as HTMLInputElement
   if (imgSrc.value === './image/eye.png') {
     imgSrc.value = './image/eye-close.png'
     if (inputElement) {
