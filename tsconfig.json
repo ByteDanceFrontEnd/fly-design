@@ -34,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/assets/icons/index.js", "src/assets/icons/index.js"  ],
   "exclude": [
     "node_modules"
   ]

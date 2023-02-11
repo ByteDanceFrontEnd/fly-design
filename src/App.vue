@@ -7,11 +7,22 @@
   <!-- Transfer -->
   <Transfer
     :data="data"
-    left-title="左边"
-    right-title="右边"
+    :titles="['左边', '右边']"
     empty-key-words="没有数据"
+    :button-texts="['To Left', 'ToRight']"
+    filterable
     v-model="value"
-  ></Transfer>
+    @change="chenge"
+    @left-check-change="leftCheckChange"
+    @right-check-change="rightCheckChange"
+  >
+    <template #left-footer>
+      <button>opration1</button>
+    </template>
+    <template #right-footer>
+      <button>opration2</button>
+    </template>
+  </Transfer>
 
   <!-- Input -->
   <div class="myInput">
@@ -143,17 +154,30 @@ let list = [
   {
     id: 10,
     label: 'Option10 ',
-    disabled: true,
+    disabled: false,
   },
   {
     id: 11,
     label: 'Option11 ',
-    disabled: true,
+    disabled: false,
   },
 ]
 // list = []
 const value = ref([])
 const data = ref(list)
+// 回调参数
+// 当前值、数据移动的方向（'left' / 'right'）、发生移动的数据 key 数组
+const chenge = (nowArr, leftOrRight, moveArr) => {
+  console.log('chenge', nowArr, leftOrRight, moveArr)
+}
+// 当前被选中的元素的 key 数组、选中状态发生变化的元素的id
+const leftCheckChange = (checkedArr, changedItemId) => {
+  console.log('leftCheckChange', checkedArr, changedItemId)
+}
+// 当前被选中的元素的 key 数组、选中状态发生变化的元素的id
+const rightCheckChange = (checkedArr, changedItemId) => {
+  console.log('rightCheckChange', checkedArr, changedItemId)
+}
 
 // upload
 function uploadSuccess() {

@@ -190,4 +190,8 @@ export default {
       ],
     },
   },
+  // 显示代码行号
+  markdown: {
+    lineNumbers: true
+  }
 }
