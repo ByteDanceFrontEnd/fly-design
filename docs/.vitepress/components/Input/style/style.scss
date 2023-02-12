@@ -9,6 +9,7 @@ input {
   border-style: solid;
   border-radius: 6px;
   vertical-align: top;
+  box-sizing: content-box;
 }
 
 input:focus {
@@ -155,5 +156,9 @@ button {
   }
   img {
     height: 18px;
+  }
+  span {
+    box-sizing: content-box;
+    height: 22px;
   }
 }

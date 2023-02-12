@@ -28,7 +28,7 @@
       id="password-input"
     />
     <span id="password-span" class="password-span-blur">
-      <img @click="changeImg" :src="require(imgSrc + '')" />
+      <img @click="changeImg" :src="getImageUrl()" />
     </span>
   </div>
 
@@ -94,6 +94,10 @@ const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
 const imgSrc = ref<string>('./image/eye.png')
+
+function getImageUrl() {
+  return new URL(imgSrc.value + '', import.meta.url).href
+}
 
 function blurChange() {
   setTimeout(() => {
