@@ -27,11 +27,6 @@ input::-webkit-input-placeholder {
     border-radius: 6px 0 0 6px;
     box-sizing: content-box;
   }
-
-  &-input::placeholder {
-    font-size: 14px;
-  }
-
   button {
     padding: 1px 6px 1px 6px;
   }
@@ -83,6 +78,7 @@ button {
   &-title {
     height: 35px;
     width: 293px;
+    // background-color: aqua;
     margin-top: 2px;
     border: 1px solid #ebebeb;
     border-radius: 3px 3px 0 0;

@@ -13,8 +13,8 @@
   </div>
 
   <!-- 搜索框 -->
-  <div v-if="type == 'search'">
-    <input :placeholder="placeholder" class="input-search" />
+  <div v-if="type == 'search'" class="search">
+    <input :placeholder="placeholder" class="search-input" />
     <button @click="fn">Search</button>
   </div>
 
