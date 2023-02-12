@@ -28,7 +28,7 @@
       id="password-input"
     />
     <span id="password-span" class="password-span-blur">
-      <img @click="changeImg" :src="require(imgSrc + '')" />
+      <img @click="changeImg" :src="imgSrc" />
     </span>
   </div>
 
@@ -43,7 +43,9 @@
       id="cache-search-input"
       v-model="inputValue"
     />
-    <button @click="addItem"><img src="./image/search.png" /></button>
+    <button @click="addItem">
+      <img src="https://img1.imgtp.com/2023/02/12/mKWB4ns6.png" />
+    </button>
     <br />
     <div class="cache-search-title" v-if="flag && searchHistory.length > 0">
       <div class="cache-search-title-history">搜索历史</div>
@@ -93,7 +95,7 @@ withDefaults(defineProps<InputProps>(), {
 const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
-const imgSrc = ref<string>('./image/eye.png')
+const imgSrc = ref<string>('https://img1.imgtp.com/2023/02/12/86q3pyMC.png')
 
 function blurChange() {
   setTimeout(() => {
@@ -144,13 +146,13 @@ function changeImg() {
   const inputElement = document.getElementById(
     'password-input',
   ) as HTMLInputElement
-  if (imgSrc.value === './image/eye.png') {
-    imgSrc.value = './image/eye-close.png'
+  if (imgSrc.value === 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png') {
+    imgSrc.value = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
     if (inputElement) {
       inputElement.type = 'password'
     }
   } else {
-    imgSrc.value = './image/eye.png'
+    imgSrc.value = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
     if (inputElement) {
       inputElement.type = 'text'
     }

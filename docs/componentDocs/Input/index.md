@@ -5,10 +5,11 @@
 ## 基础用法
 
 <Demo>
-  <template #component>
-    <Input placeholder="Please Input" />
-  </template>
-  <template #code>
+
+<template #component>
+<Input placeholder="Please Input" />
+</template>
+<template #code>
 
 ```vue
 <Input placeholder="Please Input" />
@@ -59,6 +60,23 @@
   </template>
 </Demo>
 
+## 密码框
+
+使用`password`属性即可得到一个可切换显示隐藏的密码框
+
+<Demo>
+  <template #component>
+    <Input placeholder="please input password" type="password" />
+  </template>
+  <template #code>
+
+```vue
+<Input placeholder="please input password" type="password" />
+```
+
+  </template>
+</Demo>
+
 ## 搜索框
 
 通过`type="search"`属性来将`input`元素转换为搜索框。
@@ -76,19 +94,35 @@
   </template>
 </Demo>
 
-## 密码框
-
-使用`password`属性即可得到一个可切换显示隐藏的密码框
+## 带缓存的搜索框
 
 <Demo>
   <template #component>
-    <Input placeholder="please input password" type="password" />
+    <Input placeholder="input search text" type="cache-search" />
   </template>
   <template #code>
 
 ```vue
-<Input placeholder="please input password" type="password" />
+<Input placeholder="input search text" type="cache-search" />
 ```
 
   </template>
 </Demo>
+
+## API
+
+### 属性
+
+|    参数     |      说明      |                       类型                       | 默认值 |
+| :---------: | :------------: | :----------------------------------------------: | :----: |
+|    cols     |   文本框宽度   |                      number                      |   33   |
+| placeholder | 输入框占位文本 |                      string                      |   -    |
+|    rows     |   文本框高度   |                      number                      |   5    |
+|    size     |   输入框尺寸   |                 `large`\|`small`                 |   -    |
+|    type     |      类型      | `textarea`\|`password`\|`search`\|`cache-search` |   -    |
+
+### 事件
+
+| 事件名 |         说明         |   类型   |
+| :----: | :------------------: | :------: |
+|   fn   | 点击搜索框按钮时触发 | Function |

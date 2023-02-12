@@ -79,7 +79,6 @@ button {
   &-title {
     height: 35px;
     width: 293px;
-    // background-color: aqua;
     margin-top: 2px;
     border: 1px solid #ebebeb;
     border-radius: 3px 3px 0 0;
@@ -115,14 +114,15 @@ button {
     display: block;
     padding: 5px 10px;
   }
-}
 
-.cache-search img {
-  height: 28px;
-}
+  img {
+    height: 28px;
+  }
 
-.cache-search button {
-  height: 36px;
+  button {
+    height: 36px;
+    padding: 1px 6px 1px 6px;
+  }
 }
 
 .password {
