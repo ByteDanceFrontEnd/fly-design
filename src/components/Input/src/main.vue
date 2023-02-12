@@ -1,16 +1,28 @@
 <template>
-  <div v-if="type === 'textarea'">
-    <textarea :placeholder="placeholder" :rows="rows" :cols="cols" />
-  </div>
   <div v-if="!type">
     <input
       :placeholder="placeholder"
       :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
     />
   </div>
+  <div v-if="type === 'textarea'">
+    <textarea :placeholder="placeholder" :rows="rows" :cols="cols" />
+  </div>
   <div v-if="type == 'search'">
     <input :placeholder="placeholder" class="input-search" />
     <button @click="fn">Search</button>
+  </div>
+  <div v-if="type === 'password'" class="password">
+    <input
+      class="password-input"
+      :placeholder="placeholder"
+      @blur="inputBlur"
+      @focus="inputFocus"
+      id="password-input"
+    />
+    <span id="password-span" class="password-span-blur">
+      <img @click="changeImg" :src="require(imgSrc + '')" />
+    </span>
   </div>
   <div v-if="type === 'cache-search'" class="cache-search">
     <input
@@ -71,6 +83,7 @@ withDefaults(defineProps<InputProps>(), {
 const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
+const imgSrc = ref<string>('./image/eye.png')
 
 function blurChange() {
   setTimeout(() => {
@@ -104,11 +117,16 @@ function clearHistory() {
 
 function addItem() {
   // console.log(inputValue.value)
-  let item: any = []
-  item = localStorage.getItem('SearchHistory')
-    ? localStorage.getItem('SearchHistory')?.split(',')
-    : []
-  let str: string = inputValue.value
+  let item: string[]
+  const temp: string | null = localStorage.getItem('SearchHistory')
+    ? localStorage.getItem('SearchHistory')
+    : null
+  if (temp) {
+    item = temp.split(',')
+  } else {
+    item = []
+  }
+  const str: string = inputValue.value
   if (str.length > 0 && !item.includes(str)) {
     item.push(str)
   }
@@ -123,126 +141,41 @@ function addItem() {
 function changeItem(value: string) {
   inputValue.value = value
 }
+
+function inputBlur() {
+  const spanElement = document.getElementById('password-span')
+  if (spanElement) {
+    spanElement.className = 'password-span-blur'
+  }
+  // console.log(blur)
+}
+
+function inputFocus() {
+  const spanElement = document.getElementById('password-span')
+  if (spanElement) {
+    spanElement.className = 'password-span-focus'
+  }
+  // console.log(focus)
+}
+
+function changeImg() {
+  const inputElement = document.getElementById(
+    'password-input',
+  ) as HTMLInputElement
+  if (imgSrc.value === './image/eye.png') {
+    imgSrc.value = './image/eye-close.png'
+    if (inputElement) {
+      inputElement.type = 'password'
+    }
+  } else {
+    imgSrc.value = './image/eye.png'
+    if (inputElement) {
+      inputElement.type = 'text'
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-input {
-  height: 32px;
-  padding: 4px 11px;
-  border: 1px solid #d9d9d9;
-  border-style: solid;
-  border-radius: 6px;
-  vertical-align: top;
-}
-
-input:focus {
-  border-color: #4096ff;
-  border-inline-end-width: 1px;
-}
-
-input::-webkit-input-placeholder {
-  color: #d9d9d9;
-  font-weight: 100;
-}
-
-.input-search {
-  border-radius: 6px 0 0 6px;
-  height: 32px;
-}
-
-div {
-  display: inline-block;
-}
-
-textarea {
-  border: 1px solid #d9d9d9;
-  border-radius: 5px;
-  padding: 5px 11px;
-  outline: none;
-}
-
-textarea:hover {
-  border-color: #4096ff;
-  border-inline-end-width: 1px;
-}
-
-textarea:focus {
-  border-color: #4096ff;
-  border-inline-end-width: 1px;
-}
-
-textarea::-webkit-input-placeholder {
-  color: #d9d9d9;
-  font-weight: 500;
-}
-
-button {
-  height: 42px;
-  background-color: #1677ff;
-  color: white;
-  border: none;
-  vertical-align: top;
-  border-radius: 0 6px 6px 0;
-}
-
-.cache-search {
-  &-input-blur {
-    height: 26px;
-    border-radius: 6px 0 0 6px;
-  }
-
-  &-input-focus {
-    width: 270px;
-    height: 26px;
-    border-radius: 6px 0 0 6px;
-  }
-
-  &-title {
-    height: 35px;
-    width: 293px;
-    // background-color: aqua;
-    margin-top: 2px;
-    border: 1px solid #ebebeb;
-    border-radius: 3px 3px 0 0;
-
-    &-history {
-      margin: 7px 0 0 10px;
-      color: #869aab;
-      font-size: 13px;
-    }
-
-    &-clear {
-      border: none;
-      background-color: transparent;
-      color: #1e80ff;
-      font-size: 13px;
-      cursor: pointer;
-      margin: -3px 0 0 180px;
-      padding: 0;
-    }
-  }
-
-  &-list {
-    display: block;
-    cursor: pointer;
-    color: #5e6369;
-    width: 293px;
-    border-left: 1px solid #ebebeb;
-    border-right: 1px solid #ebebeb;
-    border-bottom: 1px solid #ebebeb;
-  }
-
-  &-list div {
-    display: block;
-    padding: 5px 10px;
-  }
-}
-
-.cache-search img {
-  height: 28px;
-}
-
-.cache-search button {
-  height: 36px;
-}
+@import './style/style.scss';
 </style>
