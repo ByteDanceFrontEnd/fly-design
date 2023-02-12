@@ -1,17 +1,24 @@
 <template>
+  <!-- 设置尺寸的input框 -->
   <div v-if="!type">
     <input
       :placeholder="placeholder"
       :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
     />
   </div>
+
+  <!-- 文本域 -->
   <div v-if="type === 'textarea'">
     <textarea :placeholder="placeholder" :rows="rows" :cols="cols" />
   </div>
+
+  <!-- 搜索框 -->
   <div v-if="type == 'search'">
     <input :placeholder="placeholder" class="input-search" />
     <button @click="fn">Search</button>
   </div>
+
+  <!-- 密码框 -->
   <div v-if="type === 'password'" class="password">
     <input
       class="password-input"
@@ -24,6 +31,8 @@
       <img @click="changeImg" :src="require(imgSrc + '')" />
     </span>
   </div>
+
+  <!-- 带缓存的搜索框 -->
   <div v-if="type === 'cache-search'" class="cache-search">
     <input
       :placeholder="placeholder"
@@ -56,6 +65,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { inputBlur, inputFocus } from './utils'
 
 type InputProps = {
   placeholder?: string
@@ -90,42 +100,32 @@ function blurChange() {
     const inputElement = document.getElementById('cache-search-input')
     flag.value = false
     if (inputElement) {
-      // console.log(inputElement.className)
       setTimeout(() => {
         inputElement.className = 'cache-search-input-blur'
       }, 10)
     }
   }, 200)
-  // console.log('blur')
 }
 
 function focusChange() {
   const inputElement = document.getElementById('cache-search-input')
   flag.value = true
   if (inputElement) {
-    // console.log(inputElement.className)
     inputElement.className = 'cache-search-input-focus'
   }
-  // console.log('focus')
 }
 
 function clearHistory() {
   localStorage.removeItem('SearchHistory')
-  // nextTick()
   searchHistory.value = []
 }
 
 function addItem() {
-  // console.log(inputValue.value)
   let item: string[]
   const temp: string | null = localStorage.getItem('SearchHistory')
     ? localStorage.getItem('SearchHistory')
     : null
-  if (temp) {
-    item = temp.split(',')
-  } else {
-    item = []
-  }
+  item = temp ? temp.split(',') : []
   const str: string = inputValue.value
   if (str.length > 0 && !item.includes(str)) {
     item.push(str)
@@ -133,29 +133,11 @@ function addItem() {
   if (item.length > 0) {
     localStorage.setItem('SearchHistory', item.join(','))
   }
-  // nextTick()
   searchHistory.value = item
-  // console.log(localStorage.getItem('SearchHistory'))
 }
 
 function changeItem(value: string) {
   inputValue.value = value
-}
-
-function inputBlur() {
-  const spanElement = document.getElementById('password-span')
-  if (spanElement) {
-    spanElement.className = 'password-span-blur'
-  }
-  // console.log(blur)
-}
-
-function inputFocus() {
-  const spanElement = document.getElementById('password-span')
-  if (spanElement) {
-    spanElement.className = 'password-span-focus'
-  }
-  // console.log(focus)
 }
 
 function changeImg() {
