@@ -21,11 +21,14 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "prepare": "husky install",
-    "build:js": "webpack --config ./webpack.component.js"
+    "build:js": "webpack --config ./webpack.component.js",
+    "build:css": "npx gulp sass"
   },
   "dependencies": {
     "@vue/eslint-config-prettier": "^7.0.0",
     "core-js": "^3.8.3",
+    "gulp": "^4.0.2",
+    "gulp-minify-css": "^1.2.4",
     "nprogress": "^0.2.0",
     "vue": "^3.2.47"
   },
@@ -48,6 +51,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "gulp-sass": "^5.1.0",
     "husky": "^7.0.1",
     "jest": "^27.0.5",
     "lint-staged": "^11.1.2",
