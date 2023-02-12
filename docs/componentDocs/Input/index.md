@@ -4,39 +4,41 @@
 
 ## 基础用法
 
-<br/>
+<Demo>
+  <template #component>
+    <Input placeholder="Please Input" />
+  </template>
+  <template #code>
+
+```vue
 <Input placeholder="Please Input" />
-
-```html
-<input placeholder="Please Input" />
 ```
 
-## 禁用状态
-
-通过 `disabled` 属性指定是否禁用 Input 组件
-
-<Input placeholder="Please Input" disabled />
-
-```html
-<input placeholder="Please Input" disabled />
-```
+  </template>
+</Demo>
 
 ## 设置尺寸
 
-使用 size 属性改变输入框大小。
+使用 `size` 属性改变输入框大小。
 
-large
-<Input placeholder="Hello" size="large" />
-default<br/>
-<Input placeholder="Hello" />
-small<br/>
-<Input placeholder="Hello" size="small" />
+<Demo>
+  <template #component>
+    <Input placeholder="large size" size="large" />
+    <br /><br />
+    <Input placeholder="default size" />
+    <br /><br />
+    <Input placeholder="small size" size="small" />
+  </template>
+  <template #code>
 
-```html
-<input placeholder="Hello" size="large" />
-<input placeholder="Hello" />
-<input placeholder="Hello" size="small" />
+```vue
+<Input placeholder="large size" size="large" />
+<Input placeholder="default size" />
+<Input placeholder="small size" size="small" />
 ```
+
+  </template>
+</Demo>
 
 ## 文本域
 
@@ -44,18 +46,32 @@ small<br/>
 
 文本域高度可通过 `rows` 属性控制，宽度可用 `cols` 属性控制。
 
-<Input placeholder="Please Input" rows="10" type="textarea" />
+<Demo>
+  <template #component>
+    <Input placeholder="Please Input" rows="10" type="textarea" />
+  </template>
+  <template #code>
 
-```html
-<input placeholder="Please Input" rows="10" type="textarea" />
+```vue
+<Input placeholder="Please Input" rows="10" type="textarea" />
 ```
+
+  </template>
+</Demo>
 
 ## 搜索框
 
 通过`type="search"`属性来将`input`元素转换为搜索框。
 
-<Input placeholder="input search text" type="search" :fn="fun" />
+<Demo>
+  <template #component>
+    <Input placeholder="input search text" type="search" :fn="fun" />
+  </template>
+  <template #code>
 
-```
+```vue
 <Input placeholder="input search text" type="search" :fn="fun" />
 ```
+
+  </template>
+</Demo>
