@@ -1,13 +1,8 @@
+const path = require('path')
+const { VueLoaderPlugin } = require('vue-loader')
 const glob = require('glob')
 const list = {}
-// {
-//   Card: './components/lib/card/index.ts',
-//   Button: './components/lib/Button/index.ts',
-//   Input: './components/lib/Input/index.ts',
-//   Layout: './components/lib/Layout/index.ts',
-//   Transfer: './components/lib/Transfer/index.ts',
-//   Upload: './components/lib/upload/index.ts',
-// }
+
 async function makeList(dirPath, list) {
   const files = glob.sync(`${dirPath}/**/index.ts`)
   console.log('files: ', files)
@@ -26,10 +21,24 @@ makeList('components/lib', list)
 
 module.exports = {
   entry: list,
+  mode: 'development',
   output: {
     filename: '[name].umd.js',
-    path: 'dist',
+    path: path.resolve(__dirname, 'dist'),
     library: 'fly-design',
     libraryTarget: 'umd',
+  },
+  plugins: [new VueLoaderPlugin()],
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        use: [
+          {
+            loader: 'vue-loader',
+          },
+        ],
+      },
+    ],
   },
 }
