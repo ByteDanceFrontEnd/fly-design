@@ -1,7 +1,17 @@
 {
   "name": "fly-design",
   "version": "0.1.0",
-  "private": true,
+  "description": "fly-design组件库",
+  "main": "",
+  "keywords": [
+    "fly-design",
+    "vue",
+    "ui"
+  ],
+  "author": "https://github.com/ByteDanceFrontEnd",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
