@@ -1,17 +1,24 @@
 <template>
+  <!-- 设置尺寸的input框 -->
   <div v-if="!type">
     <input
       :placeholder="placeholder"
       :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
     />
   </div>
+
+  <!-- 文本域 -->
   <div v-if="type === 'textarea'">
     <textarea :placeholder="placeholder" :rows="rows" :cols="cols" />
   </div>
-  <div v-if="type == 'search'">
-    <input :placeholder="placeholder" class="input-search" />
+
+  <!-- 搜索框 -->
+  <div v-if="type == 'search'" class="search">
+    <input :placeholder="placeholder" class="search-input" />
     <button @click="fn">Search</button>
   </div>
+
+  <!-- 密码框 -->
   <div v-if="type === 'password'" class="password">
     <input
       class="password-input"
@@ -21,9 +28,11 @@
       id="password-input"
     />
     <span id="password-span" class="password-span-blur">
-      <img @click="changeImg" :src="require(imgSrc + '')" />
+      <img @click="changeImg" :src="imgSrc" />
     </span>
   </div>
+
+  <!-- 带缓存的搜索框 -->
   <div v-if="type === 'cache-search'" class="cache-search">
     <input
       :placeholder="placeholder"
@@ -34,7 +43,9 @@
       id="cache-search-input"
       v-model="inputValue"
     />
-    <button @click="addItem"><img src="./image/search.png" /></button>
+    <button @click="addItem">
+      <img src="https://img1.imgtp.com/2023/02/12/mKWB4ns6.png" />
+    </button>
     <br />
     <div class="cache-search-title" v-if="flag && searchHistory.length > 0">
       <div class="cache-search-title-history">搜索历史</div>
@@ -56,6 +67,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { inputBlur, inputFocus } from './utils'
 
 type InputProps = {
   placeholder?: string
@@ -83,49 +95,39 @@ withDefaults(defineProps<InputProps>(), {
 const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
-const imgSrc = ref<string>('./image/eye.png')
+const imgSrc = ref<string>('https://img1.imgtp.com/2023/02/12/86q3pyMC.png')
 
 function blurChange() {
   setTimeout(() => {
     const inputElement = document.getElementById('cache-search-input')
     flag.value = false
     if (inputElement) {
-      // console.log(inputElement.className)
       setTimeout(() => {
         inputElement.className = 'cache-search-input-blur'
       }, 10)
     }
   }, 200)
-  // console.log('blur')
 }
 
 function focusChange() {
   const inputElement = document.getElementById('cache-search-input')
   flag.value = true
   if (inputElement) {
-    // console.log(inputElement.className)
     inputElement.className = 'cache-search-input-focus'
   }
-  // console.log('focus')
 }
 
 function clearHistory() {
   localStorage.removeItem('SearchHistory')
-  // nextTick()
   searchHistory.value = []
 }
 
 function addItem() {
-  // console.log(inputValue.value)
   let item: string[]
   const temp: string | null = localStorage.getItem('SearchHistory')
     ? localStorage.getItem('SearchHistory')
     : null
-  if (temp) {
-    item = temp.split(',')
-  } else {
-    item = []
-  }
+  item = temp ? temp.split(',') : []
   const str: string = inputValue.value
   if (str.length > 0 && !item.includes(str)) {
     item.push(str)
@@ -133,42 +135,24 @@ function addItem() {
   if (item.length > 0) {
     localStorage.setItem('SearchHistory', item.join(','))
   }
-  // nextTick()
   searchHistory.value = item
-  // console.log(localStorage.getItem('SearchHistory'))
 }
 
 function changeItem(value: string) {
   inputValue.value = value
 }
 
-function inputBlur() {
-  const spanElement = document.getElementById('password-span')
-  if (spanElement) {
-    spanElement.className = 'password-span-blur'
-  }
-  // console.log(blur)
-}
-
-function inputFocus() {
-  const spanElement = document.getElementById('password-span')
-  if (spanElement) {
-    spanElement.className = 'password-span-focus'
-  }
-  // console.log(focus)
-}
-
 function changeImg() {
   const inputElement = document.getElementById(
     'password-input',
   ) as HTMLInputElement
-  if (imgSrc.value === './image/eye.png') {
-    imgSrc.value = './image/eye-close.png'
+  if (imgSrc.value === 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png') {
+    imgSrc.value = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
     if (inputElement) {
       inputElement.type = 'password'
     }
   } else {
-    imgSrc.value = './image/eye.png'
+    imgSrc.value = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
     if (inputElement) {
       inputElement.type = 'text'
     }

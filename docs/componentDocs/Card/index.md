@@ -4,12 +4,12 @@
 
 ### 示例
 
-<Card imgSrc='/logo.png' summary='Vue组件库' />
+<Card imgSrc='/logo.png' summary='Vue组件库' width="175" />
 
 ### 代码
 
 ```html
-<Card imgSrc="/logo.png" summary="Vue组件库" />
+<Card imgSrc="/logo.png" summary="Vue组件库" width="175" />
 ```
 
 ### Attributes

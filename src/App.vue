@@ -105,7 +105,7 @@
   </upload>
 </template>
 
-<script setup>
+<script setup langt="ts">
 import { ref } from 'vue'
 
 let list = [

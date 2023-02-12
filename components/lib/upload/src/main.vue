@@ -4,7 +4,7 @@
     <li v-for="(file, index) in tempImages" :key="index">
       <img :src="file.url" alt="" />
       <span class="preview-delete-icon">
-        <img src="./static/删除.svg" @click="deleteImage(index)" />
+        <img src="../static/删除.svg" @click="deleteImage(index)" />
       </span>
     </li>
   </ul>
