@@ -75,3 +75,20 @@
 
   </template>
 </Demo>
+
+## 密码框
+
+使用`password`属性即可得到一个可切换显示隐藏的密码框
+
+<Demo>
+  <template #component>
+    <Input placeholder="please input password" type="password" />
+  </template>
+  <template #code>
+
+```vue
+<Input placeholder="please input password" type="password" />
+```
+
+  </template>
+</Demo>
