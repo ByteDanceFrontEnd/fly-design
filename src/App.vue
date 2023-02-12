@@ -25,7 +25,7 @@
   </Transfer>
 
   <!-- Rate -->
-  <Rate v-model="rateVal" :font-size="30" />
+  <Rate v-model="rateVal" :font-size="30" allow-clear />
 
   <!-- Input -->
   <div class="myInput">

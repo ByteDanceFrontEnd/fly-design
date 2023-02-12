@@ -1,26 +1,48 @@
 <template>
   <div>
     <ul class="wrap">
-      <li v-for="num in 5" :key="num">
-        <div class="first">
-          <span
-            :class="['iconfont', 'icon-star', num <= starNum ? 'active' : '']"
-            :style="{ fontSize: fontSize + 'px' }"
-            @click="setStarNum(num)"
-          ></span>
-        </div>
-        <div class="second"></div>
+      <li v-for="num in 5" :key="num" class="item">
+        <span
+          class="first"
+          :class="[
+            'iconfont',
+            'icon-star',
+            num <= starNum ? 'active' : '',
+            num <= overStarNum ? 'overActive' : 'noActive',
+            disabled ? 'disabled' : '',
+          ]"
+          :style="{ fontSize: fontSize + 'px' }"
+          @mouseenter="setOverStarNum(num)"
+          @mouseleave="setOverStarNum(starNum)"
+          @click="CsetstarNum(num)"
+        ></span>
+        <span
+          class="second"
+          :class="[
+            'iconfont',
+            'icon-star',
+            num <= starNum ? 'active' : '',
+            num <= overStarNum ? 'overActive' : 'noActive',
+            disabled ? 'disabled' : '',
+          ]"
+          :style="{ fontSize: fontSize + 'px' }"
+          @mouseenter="setOverStarNum(num)"
+          @mouseleave="setOverStarNum(starNum)"
+          @click="CsetstarNum(num)"
+        ></span>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useStars } from './hooks'
+import { computed, ref } from 'vue'
+import { useStars, useComputed } from './hooks'
 interface Iprops {
   modelValue: number
   fontSize?: number
+  disabled?: boolean
+  allowClear?: boolean
 }
 interface Iemits {
   (e: 'update:modelValue', val: number): void
@@ -28,18 +50,43 @@ interface Iemits {
 const props = withDefaults(defineProps<Iprops>(), {
   modelValue: 0,
   fontSize: 20,
+  disabled: false,
+  allowClear: false,
 })
 const emit = defineEmits<Iemits>()
-const { starNum, setStarNum } = useStars(props.modelValue, () => {
-  emit('update:modelValue', starNum.value)
-})
-// const starNum = ref(5)
+const { starNum, setStarNum, overStarNum, setOverStarNum } = useStars(
+  props.modelValue,
+  props.allowClear,
+  () => {
+    emit('update:modelValue', starNum.value)
+  },
+)
+const { CsetstarNum } = useComputed(props.disabled, setStarNum)
 </script>
 
 <style scoped lang="scss">
 .wrap {
+  padding: 20px;
   display: flex;
   justify-content: start;
+  .item {
+    // margin-left: 15px;
+    position: relative;
+    // span {
+    //   font-size: v-bind(fontSize) + 'px';
+    // }
+    span.first {
+      position: absolute;
+      width: 50%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+    // span.second {
+    //   position: absolute;
+    //   width: 100%;
+    // }
+  }
 }
 
 @font-face {
@@ -66,10 +113,20 @@ const { starNum, setStarNum } = useStars(props.modelValue, () => {
   }
   &.icon-star {
     transition: color 0.3s;
+    cursor: pointer;
   }
 
+  &.overActive {
+    color: #fbab06;
+  }
   &.active {
     color: #fbab06;
+  }
+  &.noActive {
+    color: #999;
+  }
+  &.disabled {
+    cursor: default;
   }
 }
 </style>
