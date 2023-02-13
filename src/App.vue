@@ -24,6 +24,9 @@
     </template>
   </Transfer>
 
+  <!-- Rate -->
+  <Rate v-model="rateVal" :font-size="30" allow-clear />
+
   <!-- Input -->
   <div class="myInput">
     <Input placeholder="Hello" size="large" />
@@ -102,7 +105,7 @@
   </upload>
 </template>
 
-<script setup>
+<script setup langt="ts">
 import { ref } from 'vue'
 
 let list = [
@@ -177,6 +180,12 @@ const leftCheckChange = (checkedArr, changedItemId) => {
 // 当前被选中的元素的 key 数组、选中状态发生变化的元素的id
 const rightCheckChange = (checkedArr, changedItemId) => {
   console.log('rightCheckChange', checkedArr, changedItemId)
+}
+
+/* Rate */
+const rateVal = ref(0)
+const getStarsNum = (num) => {
+  console.log('Rate', num)
 }
 
 // upload

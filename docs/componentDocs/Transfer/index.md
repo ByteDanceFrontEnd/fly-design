@@ -278,7 +278,7 @@ const data = ref(list)
 | 插槽名 | 说明 |
 | ------ | ---- |
 | left-footer | 左侧列表底部的内容 | 
-| right-footer | 右侧列表底部的内容 | 
+| right-footer | 右侧列表底部的内容 |   
 
 ## 事件
 | 事件名 | 说明 | 回调参数 |
