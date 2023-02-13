@@ -1,22 +1,22 @@
 /* 默认主色调 */
-:root{
-    --vp-c-green: #409eff;
-    --vp-c-bg-alt: #ffffff;
-    --vp-c-green-dark: #14cfff;
+:root {
+  --vp-c-green: #409eff;
+  --vp-c-bg-alt: #ffffff;
+  --vp-c-green-dark: #14cfff;
 }
 
-.dark{
-    --vp-c-bg-alt: #161618;
+.dark {
+  --vp-c-bg-alt: #161618;
 }
 
 /* 侧边栏选中样式 */
 .VPSidebarItem.level-1.is-link {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 .VPSidebarItem.level-1.is-link.is-active.has-active {
-    background: #ecf5ff;
-    border-radius: 6px;
-    padding-left: 15px;
+  background: #ecf5ff;
+  border-radius: 6px;
+  padding-left: 15px;
 }
 
 
