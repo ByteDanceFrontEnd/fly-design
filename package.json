@@ -1,8 +1,19 @@
 {
   "name": "fly-design",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "0.1.0",
+  "description": "Vue3+Vite+TS组件库",
+  "main": "lib/fly-design.js",
+  "keywords": [
+    "fly-design",
+    "vite",
+    "vue",
+    "ts",
+    "ui"
+  ],
+  "author": "NullPointer",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -10,7 +21,9 @@
     "prepare": "husky install",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "build:components": "node ./command/build.cjs",
+    "lib": "npm run build:components"
   },
   "dependencies": {
     "nprogress": "^0.2.0",
@@ -20,12 +33,17 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.3",
     "@commitlint/config-conventional": "^17.4.3",
+    "@types/mockjs": "^1.0.6",
+    "@types/node": "^18.7.14",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "fs-extra": "^10.1.0",
     "husky": "^7.0.1",
+    "mockjs": "^1.1.0",
     "prettier": "^2.4.1",
     "prettier-eslint": "^15.0.1",
     "sass": "^1.57.1",
