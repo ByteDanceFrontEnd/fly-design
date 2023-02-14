@@ -1,7 +1,19 @@
 {
   "name": "fly-design",
   "version": "0.1.0",
-  "type": "module",
+  "description": "Vue3+Vite+TS组件库",
+  "main": "lib/fly-design.js",
+  "keywords": [
+    "fly-design",
+    "vite",
+    "vue",
+    "ts",
+    "ui"
+  ],
+  "author": "NullPointer",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -11,7 +23,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "build:components": "node ./command/build.cjs",
-    "lib": "npm run build:components && copy package.json"
+    "lib": "npm run build:components"
   },
   "dependencies": {
     "nprogress": "^0.2.0",
