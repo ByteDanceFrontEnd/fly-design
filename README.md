@@ -19,15 +19,15 @@ npm install fly-design
 
 ```javascript
 // 全部引入
-import flyd from '../lib/fly-design.js'
-import '../lib/style.css'
+import flyd from 'fly-design/lib/fly-design.js'
+import 'fly-design/lib/style.css'
 const app = createApp(App)
 app.use(flyd)
 app.mount('#app')
 
 // 按需引入
-import Input from '../lib/Input/index.js'
-import '../lib/Input/style.css'
+import Input from 'fly-design/lib/Input/index.js'
+import 'fly-design/lib/Input/style.css'
 const app = createApp(App)
 app.use(Input)
 app.mount('#app')
