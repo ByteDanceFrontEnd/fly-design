@@ -39,7 +39,9 @@
     <br /><br />
     <Input placeholder="input search text" type="search" :fn="fun" />
     <br /><br />
-    <Input placeholder="input search text" type="cache-search" />
+    <div style="text-align: center">
+      <Input placeholder="input search text" type="cache-search" />
+    </div>
     <br /><br />
     <Input placeholder="please input password" type="password" />
   </div>

@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import flyd from '../lib/fly-design.mjs'
-import '../lib/style.css'
+import flyd from './components/index.ts'
 // import Input from '../lib/Input/index.js'
 // import '../lib/Input/style.css'
 const app = createApp(App)
