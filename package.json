@@ -1,19 +1,5 @@
 {
   "name": "fly-design",
-  "version": "0.1.0",
-  "description": "Vue3+Vite+TS组件库",
-  "main": "lib/fly-design.js",
-  "keywords": [
-    "fly-design",
-    "vite",
-    "vue",
-    "ts",
-    "ui"
-  ],
-  "author": "NullPointer",
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -50,6 +36,7 @@
     "sass-loader": "^13.2.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
+    "vitest": "^0.28.5",
     "vue-tsc": "^1.0.24"
   },
   "gitHooks": {

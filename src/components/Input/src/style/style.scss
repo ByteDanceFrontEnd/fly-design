@@ -69,6 +69,7 @@ button {
 }
 
 .cache-search {
+
   &-input-blur {
     height: 26px;
     border-radius: 6px 0 0 6px;
@@ -86,6 +87,7 @@ button {
     margin-top: 2px;
     border: 1px solid #ebebeb;
     border-radius: 3px 3px 0 0;
+    display: block;
 
     &-history {
       margin: 7px 0 0 10px;
@@ -116,6 +118,7 @@ button {
 
   &-list div {
     display: block;
+    text-align: left;
     padding: 5px 10px;
   }
 }
