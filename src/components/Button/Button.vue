@@ -1,8 +1,13 @@
+<script lang="ts">
+export default { name: 'Button' }
+</script>
+
 <template>
   <div :class="fClass">
     <button><slot></slot></button>
   </div>
 </template>
+
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -15,6 +20,7 @@ const props = withDefaults(defineProps<Itype>(), {
   type: 'default',
   disabled: false,
 })
+
 const fClass = computed(() => {
   return [
     'f-button',
@@ -23,6 +29,7 @@ const fClass = computed(() => {
   ]
 })
 </script>
+
 <style lang="scss" scoped>
 button {
   outline: none;
