@@ -73,8 +73,6 @@ type InputProps = {
   placeholder?: string
   size?: string
   showPassword?: boolean
-  prefixIcon?: string
-  suffixIcon?: string
   type?: string
   rows?: number
   cols?: number
@@ -85,8 +83,6 @@ withDefaults(defineProps<InputProps>(), {
   placeholder: '',
   size: '',
   showPassword: false,
-  prefixIcon: '',
-  suffixIcon: '',
   type: '',
   rows: 5,
   cols: 33,
