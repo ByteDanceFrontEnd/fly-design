@@ -9,7 +9,9 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "build:components": "node ./command/build.cjs",
-    "lib": "npm run build:components"
+    "lib": "npm run build:components",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "nprogress": "^0.2.0",
@@ -28,6 +30,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "fs-extra": "^10.1.0",
+    "happy-dom": "^8.4.4",
     "husky": "^7.0.1",
     "mockjs": "^1.1.0",
     "prettier": "^2.4.1",
