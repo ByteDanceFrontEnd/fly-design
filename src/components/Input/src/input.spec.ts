@@ -10,7 +10,7 @@ describe('Input Test', () => {
         size: 'small',
       },
     })
-    expect(demoInput1.find('input').attributes().style).toBe('height: 24px;')
+    expect(demoInput1.find('input').attributes().class).toBe('f-input-small')
 
     const demoInput2 = mount(Input, {
       props: {

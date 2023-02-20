@@ -96,7 +96,9 @@ const props = withDefaults(defineProps<InputProps>(), {
 const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
-const imgSrc = ref<string>('https://img1.imgtp.com/2023/02/12/86q3pyMC.png')
+let url1: string = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
+let url2: string = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
+const imgSrc = ref<string>(url1)
 
 const fClass = computed(() => {
   return [`f-input-${props.size}`]
@@ -151,13 +153,13 @@ function changeImg() {
   const inputElement = document.getElementById(
     'password-input',
   ) as HTMLInputElement
-  if (imgSrc.value === 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png') {
-    imgSrc.value = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
+  if (imgSrc.value === url1) {
+    imgSrc.value = url2
     if (inputElement) {
       inputElement.type = 'password'
     }
   } else {
-    imgSrc.value = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
+    imgSrc.value = url1
     if (inputElement) {
       inputElement.type = 'text'
     }

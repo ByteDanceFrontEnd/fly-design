@@ -81,7 +81,7 @@ button {
 }
 
 .cache-search {
-
+  
   &-input-blur {
     height: 26px;
     border-radius: 6px 0 0 6px;
@@ -91,6 +91,14 @@ button {
     width: 270px;
     height: 26px;
     border-radius: 6px 0 0 6px;
+  }
+
+  &-input-blur::placeholder {
+    font-size: 14px;
+  }
+
+  &-input-focus::placefocus {
+    font-size: 14px;
   }
 
   &-title {
