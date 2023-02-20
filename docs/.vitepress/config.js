@@ -42,23 +42,6 @@ export default {
             },
           ],
         },
-        {
-          text: '开发',
-          items: [
-            {
-              text: '开发指南',
-              link: '/guide/developguide',
-            },
-            {
-              text: '开发常见问题',
-              link: '/guide/developquestion',
-            },
-            {
-              text: '提交示例',
-              link: '/guide/commitexample',
-            },
-          ],
-        },
       ],
       '/componentDocs/': [
         {
@@ -192,6 +175,6 @@ export default {
   },
   // 显示代码行号
   markdown: {
-    lineNumbers: true
-  }
+    lineNumbers: true,
+  },
 }

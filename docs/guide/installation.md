@@ -2,11 +2,11 @@
 
 ## 环境支持
 
-由于 Vue 3 不再支持 IE11，Fly-Design 也不再支持 IE11 浏览器。
+由于 Vue 3 不再支持 IE11，Fly Design 也不再支持 IE11 浏览器。
 
 ## 版本
 
-Fly-Design 目前还在开发迭代中
+fly-design 0.3.0
 
 ## 使用包管理器
 
@@ -20,18 +20,14 @@ Fly-Design 目前还在开发迭代中
 npm install fly-design
 ```
 
-## Yarn
+## YARN
 
 ```shell
 yarn add fly-design
 ```
 
-## pnpm
+## PNPM
 
 ```shell
 pnpm install fly-design
 ```
-
-## 浏览器直接引入
-
-暂不支持
