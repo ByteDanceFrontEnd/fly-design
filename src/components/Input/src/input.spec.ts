@@ -4,12 +4,22 @@ import Input from './Input.vue'
 
 describe('Input Test', () => {
   it('should render prop', () => {
-    const demoInput = mount(Input, {
+    const demoInput1 = mount(Input, {
       props: {
         type: '',
         size: 'small',
       },
     })
-    expect(demoInput.find('input').attributes().style).toBe('height: 24px;')
+    expect(demoInput1.find('input').attributes().style).toBe('height: 24px;')
+
+    const demoInput2 = mount(Input, {
+      props: {
+        type: 'textarea',
+        placeholder: 'Hello World',
+      },
+    })
+    expect(demoInput2.find('textarea').attributes().placeholder).toBe(
+      'Hello World',
+    )
   })
 })
