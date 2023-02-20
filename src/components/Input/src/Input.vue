@@ -5,10 +5,7 @@ export default { name: 'Input' }
 <template>
   <!-- 设置尺寸的input框 -->
   <div v-if="!type">
-    <input
-      :placeholder="placeholder"
-      :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
-    />
+    <input :placeholder="placeholder" :class="fClass" />
   </div>
 
   <!-- 文本域 -->
@@ -70,7 +67,7 @@ export default { name: 'Input' }
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { inputBlur, inputFocus } from './utils'
 
 type InputProps = {
@@ -85,9 +82,9 @@ type InputProps = {
   fn?: () => void
 }
 
-withDefaults(defineProps<InputProps>(), {
+const props = withDefaults(defineProps<InputProps>(), {
   placeholder: '',
-  size: '',
+  size: 'default',
   showPassword: false,
   prefixIcon: '',
   suffixIcon: '',
@@ -100,6 +97,10 @@ const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
 const imgSrc = ref<string>('https://img1.imgtp.com/2023/02/12/86q3pyMC.png')
+
+const fClass = computed(() => {
+  return [`f-input-${props.size}`]
+})
 
 function blurChange() {
   setTimeout(() => {

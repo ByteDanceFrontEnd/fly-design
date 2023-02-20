@@ -21,6 +21,18 @@ input::-webkit-input-placeholder {
   font-weight: 100;
 }
 
+.f-input {
+  &-default {
+    height: 32px;
+  }
+  &-small {
+    height: 24px;
+  }
+  &-large {
+    height: 40px;
+  }
+}
+
 .search {
   &-input {
     height: 32px;
