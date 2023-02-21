@@ -13,15 +13,13 @@ export function inputFocus() {
 }
 
 export function debounce(fn: any, delay: number) {
-  let timer = null
+  let timer: ReturnType<typeof setTimeout> | null = null
   return function () {
-    let context = this
-    let args = arguments
     if (timer) {
       clearTimeout(timer)
     }
-    timer = setTimeout(function () {
-      fn.apply(context, args)
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
     }, delay);
   };
 }

@@ -112,7 +112,7 @@ const props = withDefaults(defineProps<InputProps>(), {
 const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
-let searchHistory1 = ref([])
+let searchHistory1 = ref<Array<[string,string]>>([])
 let url1: string = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
 let url2: string = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
 const imgSrc = ref<string>(url1)
@@ -121,7 +121,7 @@ const searchInput = ref(null);
 onMounted(() => {
   const input = searchInput.value
   if (input) {
-    input.addEventListener('input', debounce(search, 500))
+    (input as HTMLInputElement).addEventListener('input', debounce(search, 500))
   }
 })
 
