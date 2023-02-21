@@ -39,7 +39,9 @@
     <br /><br />
     <Input placeholder="input search text" type="search" :fn="fun" />
     <br /><br />
-    <Input placeholder="input search text" type="cache-search" />
+    <div id="cache-search">
+      <Input placeholder="input search text" type="cache-search" />
+    </div>
     <br /><br />
     <Input placeholder="please input password" type="password" />
   </div>
@@ -211,12 +213,23 @@ function fun() {
   margin-top: 30px;
   margin-left: 20px;
 }
+
 .common-layout {
   width: 1000px;
   color: white;
   text-align: center;
 }
+
 .myInput {
   margin-left: 20px;
+}
+
+#cache-search {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
