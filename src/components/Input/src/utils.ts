@@ -11,3 +11,17 @@ export function inputFocus() {
     spanElement.className = 'password-span-focus'
   }
 }
+
+export function debounce(fn: any, delay: number) {
+  let timer = null
+  return function () {
+    let context = this
+    let args = arguments
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(function () {
+      fn.apply(context, args)
+    }, delay);
+  };
+}

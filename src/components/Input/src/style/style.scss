@@ -110,7 +110,7 @@ button {
     font-size: 14px;
   }
 
-  &-input-focus::placefocus {
+  &-input-focus::placeholder {
     font-size: 14px;
   }
 
@@ -147,12 +147,17 @@ button {
     border-left: 1px solid #ebebeb;
     border-right: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
-  }
 
-  &-list div {
-    display: block;
-    text-align: left;
-    padding: 5px 10px;
+    div {
+      display: block;
+      text-align: left;
+      padding: 5px 10px;
+    }
+    
+    p {
+      display: inline-block;
+      font-weight: bold;
+    }
   }
 }
 
