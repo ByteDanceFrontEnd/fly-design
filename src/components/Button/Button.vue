@@ -31,6 +31,11 @@ const fClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+
+div {
+  display: inline-block;
+}
+
 button {
   outline: none;
   border: 0;
@@ -46,26 +51,62 @@ button {
   button {
     padding: 12px 24px;
     border-radius: 4px;
-    border: 1px solid #299ee2;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
   }
-}
-.f-button-default {
-  button {
-    background: #f7f4f4;
+
+  &-default {
+    button {
+      color: #606266;
+      border: 1px solid #dcdfe6;
+    }
+
+    button:hover {
+      border: 1px solid #409EFF;
+      color: #409EFF;
+    }
   }
-}
-.f-button-primary {
-  button {
-    background: #299ee2;
+
+  &-primary {
+    button {
+      background: #1677FF;
+    }
   }
-}
-.f-button-disabled {
-  button {
-    opacity: 0.4;
-    cursor: no-drop;
-    &:hover,
-    &:focus {
+
+  &-success {
+    button {
+      background: #67C23A;
+    }
+  }
+
+  &-danger {
+    button {
+      background: #DC3545;
+    }
+  }
+
+  &-warning {
+    button {
+      background: #FFC107;
+    }
+  }
+
+  &-info {
+    button {
+      background: #0DCAF0;
+    }
+  }
+
+  &-disabled {
+    button {
       opacity: 0.4;
+      cursor: no-drop;
+      &:hover,
+      &:focus {
+        opacity: 0.4;
+      }
     }
   }
 }
