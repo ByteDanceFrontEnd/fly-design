@@ -9,7 +9,6 @@ input {
   border-style: solid;
   border-radius: 6px;
   vertical-align: top;
-  box-sizing: content-box;
 }
 
 input:focus {
@@ -22,12 +21,34 @@ input::-webkit-input-placeholder {
   font-weight: 100;
 }
 
+.f-input {
+  &-default {
+    height: 32px;
+  }
+  &-small {
+    height: 24px;
+  }
+  &-large {
+    height: 40px;
+  }
+}
+
 .search {
   &-input {
     height: 32px;
     border-radius: 6px 0 0 6px;
     box-sizing: content-box;
   }
+
+  &-input::placeholder {
+    font-size: 14px;
+  }
+
+  &-input:hover {
+    border-color: #4096ff;
+    border-inline-end-width: 1px;
+  }
+
   button {
     padding: 1px 6px 1px 6px;
   }
@@ -65,15 +86,33 @@ button {
 }
 
 .cache-search {
+  
+  img {
+    height: 28px;
+  }
+
+  button {
+    height: 36px;
+    padding: 1px 6px 1px 6px;
+  }
+
   &-input-blur {
-    height: 26px;
+    height: 36px;
     border-radius: 6px 0 0 6px;
   }
 
   &-input-focus {
     width: 270px;
-    height: 26px;
+    height: 36px;
     border-radius: 6px 0 0 6px;
+  }
+
+  &-input-blur::placeholder {
+    font-size: 14px;
+  }
+
+  &-input-focus::placeholder {
+    font-size: 14px;
   }
 
   &-title {
@@ -82,6 +121,7 @@ button {
     margin-top: 2px;
     border: 1px solid #ebebeb;
     border-radius: 3px 3px 0 0;
+    display: block;
 
     &-history {
       margin: 7px 0 0 10px;
@@ -108,26 +148,23 @@ button {
     border-left: 1px solid #ebebeb;
     border-right: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
-  }
 
-  &-list div {
-    display: block;
-    padding: 5px 10px;
-  }
-
-  img {
-    height: 28px;
-  }
-
-  button {
-    height: 36px;
-    padding: 1px 6px 1px 6px;
+    div {
+      display: block;
+      text-align: left;
+      padding: 5px 10px;
+    }
+    
+    p {
+      display: inline-block;
+      font-weight: bold;
+    }
   }
 }
 
 .password {
   &-input {
-    height: 26px;
+    height: 31px;
     display: inline-block;
     vertical-align: middle;
     border-radius: 6px 0 0 6px;
@@ -156,9 +193,5 @@ button {
   }
   img {
     height: 18px;
-  }
-  span {
-    box-sizing: content-box;
-    height: 22px;
   }
 }

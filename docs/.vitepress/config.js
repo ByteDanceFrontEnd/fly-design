@@ -135,41 +135,7 @@ export default {
               link: '/componentDocs/Card/',
             },
           ],
-        },
-        {
-          text: '反馈',
-          items: [
-            {
-              text: 'Alert 警告提示',
-              link: '/componentDocs/Alert/',
-            },
-            {
-              text: 'Message 全局提示',
-              link: '/componentDocs/Message/',
-            },
-            {
-              text: 'Modal 对话框',
-              link: '/componentDocs/Modal/',
-            },
-            {
-              text: 'Notification 通知提醒框',
-              link: '/componentDocs/Notification/',
-            },
-            {
-              text: 'Popconfirm 气泡确认框',
-              link: '/componentDocs/Popconfirm/',
-            },
-          ],
-        },
-        {
-          text: '其他',
-          items: [
-            {
-              text: 'Affix 固钉',
-              link: '/componentDocs/Button/',
-            },
-          ],
-        },
+        }
       ],
     },
   },
