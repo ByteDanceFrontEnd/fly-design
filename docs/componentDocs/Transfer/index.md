@@ -73,10 +73,10 @@ let list = [
   },
 ]
 const value = ref([{
-          id: 5,
-          label: 'Option5 ',
-          disabled: true,
-        }])
+  id: 5,
+  label: 'Option5 ',
+  disabled: true,
+}])
 const data = ref(list)
 </script>
 ```
