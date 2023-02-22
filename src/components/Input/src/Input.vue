@@ -1,10 +1,11 @@
+<script lang="ts">
+export default { name: 'Input' }
+</script>
+
 <template>
   <!-- 设置尺寸的input框 -->
   <div v-if="!type">
-    <input
-      :placeholder="placeholder"
-      :style="size ? { height: (size === 'small' ? 24 : 40) + 'px' } : {}"
-    />
+    <input :placeholder="placeholder" :class="fClass" />
   </div>
 
   <!-- 文本域 -->
@@ -42,6 +43,7 @@
       class="cache-search-input-blur"
       id="cache-search-input"
       v-model="inputValue"
+      ref="searchInput"
     />
     <button @click="addItem">
       <img src="https://img1.imgtp.com/2023/02/12/mKWB4ns6.png" />
@@ -53,7 +55,10 @@
         清空
       </button>
     </div>
-    <div class="cache-search-list" v-if="flag && searchHistory.length > 0">
+    <div
+      class="cache-search-list"
+      v-if="flag && searchHistory.length > 0 && !inputValue"
+    >
       <div
         v-for="(item, index) in searchHistory"
         :key="index"
@@ -62,12 +67,24 @@
         {{ item }}
       </div>
     </div>
+    <div
+      class="cache-search-list"
+      v-if="flag && searchHistory1.length > 0 && inputValue"
+    >
+      <div
+        v-for="(item, index) in searchHistory1"
+        :key="index"
+        @click="changeItem(item[0] + item[1])"
+      >
+        <p>{{ item[0] }}</p>{{ item[1] }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { inputBlur, inputFocus } from './utils'
+import { ref, computed, onMounted } from 'vue'
+import { inputBlur, inputFocus, debounce } from './utils'
 
 type InputProps = {
   placeholder?: string
@@ -81,9 +98,9 @@ type InputProps = {
   fn?: () => void
 }
 
-withDefaults(defineProps<InputProps>(), {
+const props = withDefaults(defineProps<InputProps>(), {
   placeholder: '',
-  size: '',
+  size: 'default',
   showPassword: false,
   prefixIcon: '',
   suffixIcon: '',
@@ -95,7 +112,36 @@ withDefaults(defineProps<InputProps>(), {
 const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
-const imgSrc = ref<string>('https://img1.imgtp.com/2023/02/12/86q3pyMC.png')
+let searchHistory1 = ref<Array<[string,string]>>([])
+let url1: string = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
+let url2: string = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
+const imgSrc = ref<string>(url1)
+const searchInput = ref(null);
+
+onMounted(() => {
+  const input = searchInput.value
+  if (input) {
+    (input as HTMLInputElement).addEventListener('input', debounce(search, 500))
+  }
+})
+
+const fClass = computed(() => {
+  return [`f-input-${props.size}`]
+})
+
+function search() {
+  searchHistory1.value = []
+  const temp = inputValue.value
+  const len = temp.length
+  if (len === 0) {
+    return
+  }
+  for (const item of searchHistory.value) {
+    if (item.length >= len && item.substring(0,len) === temp) {
+      searchHistory1.value.push([temp, item.substring(len)])
+    }
+  }
+}
 
 function blurChange() {
   setTimeout(() => {
@@ -146,13 +192,13 @@ function changeImg() {
   const inputElement = document.getElementById(
     'password-input',
   ) as HTMLInputElement
-  if (imgSrc.value === 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png') {
-    imgSrc.value = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
+  if (imgSrc.value === url1) {
+    imgSrc.value = url2
     if (inputElement) {
       inputElement.type = 'password'
     }
   } else {
-    imgSrc.value = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
+    imgSrc.value = url1
     if (inputElement) {
       inputElement.type = 'text'
     }

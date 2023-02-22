@@ -42,23 +42,6 @@ export default {
             },
           ],
         },
-        {
-          text: '开发',
-          items: [
-            {
-              text: '开发指南',
-              link: '/guide/developguide',
-            },
-            {
-              text: '开发常见问题',
-              link: '/guide/developquestion',
-            },
-            {
-              text: '提交示例',
-              link: '/guide/commitexample',
-            },
-          ],
-        },
       ],
       '/componentDocs/': [
         {
@@ -152,46 +135,12 @@ export default {
               link: '/componentDocs/Card/',
             },
           ],
-        },
-        {
-          text: '反馈',
-          items: [
-            {
-              text: 'Alert 警告提示',
-              link: '/componentDocs/Alert/',
-            },
-            {
-              text: 'Message 全局提示',
-              link: '/componentDocs/Message/',
-            },
-            {
-              text: 'Modal 对话框',
-              link: '/componentDocs/Modal/',
-            },
-            {
-              text: 'Notification 通知提醒框',
-              link: '/componentDocs/Notification/',
-            },
-            {
-              text: 'Popconfirm 气泡确认框',
-              link: '/componentDocs/Popconfirm/',
-            },
-          ],
-        },
-        {
-          text: '其他',
-          items: [
-            {
-              text: 'Affix 固钉',
-              link: '/componentDocs/Button/',
-            },
-          ],
-        },
+        }
       ],
     },
   },
   // 显示代码行号
   markdown: {
-    lineNumbers: true
-  }
+    lineNumbers: true,
+  },
 }

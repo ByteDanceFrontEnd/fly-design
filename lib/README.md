@@ -40,5 +40,5 @@ app.mount('#app')
 ## ✨ 亮点
 
 - 多个常用组件
-- 使用 Vue3+TS
+- 使用 Vue3+Vite+TS
 - 单元测试

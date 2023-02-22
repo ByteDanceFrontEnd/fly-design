@@ -11,3 +11,15 @@ export function inputFocus() {
     spanElement.className = 'password-span-focus'
   }
 }
+
+export function debounce(fn: any, delay: number) {
+  let timer: ReturnType<typeof setTimeout> | null = null
+  return function () {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+    }, delay);
+  };
+}

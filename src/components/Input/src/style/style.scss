@@ -21,6 +21,18 @@ input::-webkit-input-placeholder {
   font-weight: 100;
 }
 
+.f-input {
+  &-default {
+    height: 32px;
+  }
+  &-small {
+    height: 24px;
+  }
+  &-large {
+    height: 40px;
+  }
+}
+
 .search {
   &-input {
     height: 32px;
@@ -30,6 +42,11 @@ input::-webkit-input-placeholder {
 
   &-input::placeholder {
     font-size: 14px;
+  }
+
+  &-input:hover {
+    border-color: #4096ff;
+    border-inline-end-width: 1px;
   }
 
   button {
@@ -69,6 +86,15 @@ button {
 }
 
 .cache-search {
+  
+  img {
+    height: 28px;
+  }
+
+  button {
+    height: 36px;
+    padding: 1px 6px 1px 6px;
+  }
 
   &-input-blur {
     height: 26px;
@@ -79,6 +105,14 @@ button {
     width: 270px;
     height: 26px;
     border-radius: 6px 0 0 6px;
+  }
+
+  &-input-blur::placeholder {
+    font-size: 14px;
+  }
+
+  &-input-focus::placeholder {
+    font-size: 14px;
   }
 
   &-title {
@@ -114,21 +148,18 @@ button {
     border-left: 1px solid #ebebeb;
     border-right: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
+
+    div {
+      display: block;
+      text-align: left;
+      padding: 5px 10px;
+    }
+    
+    p {
+      display: inline-block;
+      font-weight: bold;
+    }
   }
-
-  &-list div {
-    display: block;
-    text-align: left;
-    padding: 5px 10px;
-  }
-}
-
-.cache-search img {
-  height: 28px;
-}
-
-.cache-search button {
-  height: 36px;
 }
 
 .password {

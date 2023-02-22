@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import Input from './src/main.vue'
+import Input from './src/Input.vue'
 
 export default {
   install(app: App) {
