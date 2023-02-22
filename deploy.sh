@@ -1,0 +1,12 @@
+mv lib/fly-design.mjs lib/index.mjs
+mv lib/fly-design.umd.js lib/index.umd.js
+cp demo/package.json lib
+cp demo/index.d.ts lib
+cp demo/index.d.ts lib/Button
+cp demo/index.d.ts lib/card
+cp demo/index.d.ts lib/Input
+cp demo/index.d.ts lib/Layout
+cp demo/index.d.ts lib/Rate
+cp demo/index.d.ts lib/Transfer
+cp demo/index.d.ts lib/Upload
+cp README.md lib
