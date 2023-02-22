@@ -15,6 +15,7 @@ import globals from '../client'
 import { useRouter } from 'vitepress'
 import { watch, nextTick } from 'vue'
 import './style.css'
+import './index.scss'
 
 export default {
   ...DefaultTheme,
