@@ -103,8 +103,8 @@ export default {
           text: '数据录入',
           items: [
             {
-              text: 'Form 表单',
-              link: '/componentDocs/Form/',
+              text: 'Rate 评分',
+              link: '/componentDocs/Rate/',
             },
             {
               text: 'Input 输入框',

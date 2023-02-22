@@ -25,7 +25,11 @@
   </Transfer>
 
   <!-- Rate -->
-  <Rate v-model="rateVal" :font-size="30" allow-clear />
+  <Rate v-model="rateVal" :font-size="30" allow-clear allow-half >
+    <!-- <template #character>
+      A
+    </template> -->
+  </Rate>
 
   <!-- Input -->
   <div class="myInput">
@@ -187,7 +191,7 @@ const rightCheckChange = (checkedArr, changedItemId) => {
 }
 
 /* Rate */
-const rateVal = ref(0)
+const rateVal = ref(2)
 const getStarsNum = (num) => {
   console.log('Rate', num)
 }
