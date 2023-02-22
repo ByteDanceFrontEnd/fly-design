@@ -48,6 +48,10 @@
   <div>
     <Button>Default</Button>
     <Button type="primary">Primary</Button>
+    <Button type="success">Success</Button>
+    <Button type="danger">Danger</Button>
+    <Button type="warning">Warning</Button>
+    <Button type="info">Info</Button>
     <Button disabled>Disabled</Button>
   </div>
 
@@ -105,7 +109,7 @@
   </upload>
 </template>
 
-<script setup langt="ts">
+<script setup>
 import { ref } from 'vue'
 
 let list = [
@@ -211,11 +215,13 @@ function fun() {
   margin-top: 30px;
   margin-left: 20px;
 }
+
 .common-layout {
   width: 1000px;
   color: white;
   text-align: center;
 }
+
 .myInput {
   margin-left: 20px;
 }
