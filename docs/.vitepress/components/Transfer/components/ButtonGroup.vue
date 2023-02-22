@@ -38,7 +38,7 @@ const rightButtonClick = (): void => {
 <style lang="scss" scoped>
 .box {
   height: 100%;
- 
+
   &.button-group {
     display: flex;
     justify-content: center;

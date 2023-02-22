@@ -30,6 +30,7 @@
             :empty-key-words="emptyKeyWords"
             leftOrRight="left"
             :checkedData="checkedData.left"
+            :filtedData="leftFiltedData"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
@@ -78,6 +79,7 @@
             v-model:right-list-data="rightListData"
             left-or-right="right"
             :checkedData="checkedData.right"
+            :filtedData="rightFiltedData"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
@@ -164,24 +166,18 @@ const { leftFiltedData, rightFiltedData, filterData } = useDataFilter(
   --Transfer-height: 318px;
   --Transfer-head-height: 32px;
 }
-
 </style>
 
 <style lang="scss" scoped>
-div{
-  box-sizing: content-box;
-  
-}
 .transfer {
   display: flex;
   height: var(--Transfer-height);
-  // box-sizing: border-box;
-  // vitepress与一般浏览器不同，默认怪异盒模型
   width: 600px;
+  // box-sizing: border-box;
+  // border: 20px solid;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  // border: 10px solid;
   .box {
     height: 100%;
     position: relative;

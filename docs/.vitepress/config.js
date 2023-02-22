@@ -1,3 +1,5 @@
+import { componentPreview, containerPreview } from '@vitepress-demo-preview/plugin'
+
 export default {
   title: 'Fly-Design',
   themeConfig: {
@@ -141,6 +143,15 @@ export default {
   },
   // 显示代码行号
   markdown: {
+    theme: {
+      light: 'vitesse-light',
+      dark: 'vitesse-dark'
+    },
     lineNumbers: true,
-  },
+    config(md) {
+      md.use(componentPreview)
+      md.use(containerPreview)
+    }
+  }
+
 }
