@@ -96,14 +96,18 @@ button {
     padding: 1px 6px 1px 6px;
   }
 
+  input {
+    box-sizing: content-box;
+  }
+
   &-input-blur {
-    height: 36px;
+    height: 26px;
     border-radius: 6px 0 0 6px;
   }
 
   &-input-focus {
     width: 270px;
-    height: 36px;
+    height: 26px;
     border-radius: 6px 0 0 6px;
   }
 
@@ -122,6 +126,7 @@ button {
     border: 1px solid #ebebeb;
     border-radius: 3px 3px 0 0;
     display: block;
+    padding: 0;
 
     &-history {
       margin: 7px 0 0 10px;
@@ -153,22 +158,27 @@ button {
       display: block;
       text-align: left;
       padding: 5px 10px;
+      height: 30px;
+      margin: 0;
     }
     
     p {
       display: inline-block;
       font-weight: bold;
+      line-height: 10px;
+      margin: 0;
     }
   }
 }
 
 .password {
   &-input {
-    height: 31px;
+    height: 26px;
     display: inline-block;
     vertical-align: middle;
     border-radius: 6px 0 0 6px;
     border-right: none;
+    box-sizing: content-box;
   }
   &-input::placeholder {
     font-size: 14px;
@@ -181,6 +191,8 @@ button {
       vertical-align: middle;
       border: 1px solid #d9d9d9;
       border-left: none;
+      box-sizing: content-box;
+      height: 22px;
     }
     &-focus {
       padding: 6px 10px 6px 10px;
@@ -189,6 +201,8 @@ button {
       vertical-align: middle;
       border: 1px solid #4096ff;
       border-left: none;
+      box-sizing: content-box;
+      height: 22px;
     }
   }
   img {
