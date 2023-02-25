@@ -3,7 +3,6 @@ import { componentPreview, containerPreview } from '@vitepress-demo-preview/plug
 export default {
   title: 'Fly-Design',
   themeConfig: {
-    // siteTitle: false,
     logo: '/logo.png',
     nav: [
       { text: '指南', link: '/guide/installation' },
@@ -83,19 +82,6 @@ export default {
             {
               text: 'Space 间距',
               link: '/componentDocs/Space/',
-            },
-          ],
-        },
-        {
-          text: '导航',
-          items: [
-            {
-              text: 'DropDown 下拉菜单',
-              link: '/componentDocs/DropDown/',
-            },
-            {
-              text: 'Menu 导航菜单',
-              link: '/componentDocs/Menu/',
             },
           ],
         },

@@ -6,7 +6,7 @@
 
 ## 版本
 
-fly-design 0.3.0
+fly-design 0.8.0
 
 ## 使用包管理器
 
