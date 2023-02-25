@@ -5,22 +5,19 @@
   </div>
 
   <!-- Transfer -->
-  <Transfer
-    :data="data"
+  <Transfer 
+    v-model="value"
+    :data="data" 
+    filterable 
     :titles="['左边', '右边']"
     empty-key-words="没有数据"
-    :button-texts="['To Left', 'ToRight']"
-    filterable
-    v-model="value"
-    @change="chenge"
-    @left-check-change="leftCheckChange"
-    @right-check-change="rightCheckChange"
-  >
+    :button-texts="['To left', 'To right']">
+
     <template #left-footer>
-      <button>opration1</button>
+      opration1
     </template>
     <template #right-footer>
-      <button>opration2</button>
+      opration2
     </template>
   </Transfer>
 

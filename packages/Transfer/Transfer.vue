@@ -30,6 +30,7 @@
             :empty-key-words="emptyKeyWords"
             leftOrRight="left"
             :checkedData="checkedData.left"
+            :filtedData="leftFiltedData"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
@@ -78,6 +79,7 @@
             v-model:right-list-data="rightListData"
             left-or-right="right"
             :checkedData="checkedData.right"
+            :filtedData="rightFiltedData"
             @checkbox-click="setCheckedData"
             @drag-item="setDragedItem"
           ></ListItem>
