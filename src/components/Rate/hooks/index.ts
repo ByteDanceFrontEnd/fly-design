@@ -1,1 +1,1 @@
-export { useStars, useComputed } from './useStars'
+export { useStars } from './useStars'

@@ -1,3 +1,7 @@
+<script lang="ts">
+export default { name: 'Button' }
+</script>
+
 <template>
   <div :class="fClass">
     <button><slot></slot></button>

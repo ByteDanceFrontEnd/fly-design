@@ -10,6 +10,7 @@ import Content from './components/Layout/Content.vue'
 import Footer from './components/Layout/Footer.vue'
 import Upload from './components/upload/upload.vue'
 import Demo from './components/Demo/Demo.vue'
+import Rate from './components/Rate/Rate.vue'
 
 export default [
   ['Card', Card],
@@ -23,4 +24,5 @@ export default [
   ['Footer', Footer],
   ['Upload', Upload],
   ['Demo', Demo],
+  ['Rate', Rate],
 ]

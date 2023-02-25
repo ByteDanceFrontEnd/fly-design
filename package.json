@@ -14,6 +14,8 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@vitepress-demo-preview/component": "^2.1.0",
+    "@vitepress-demo-preview/plugin": "^1.1.7",
     "nprogress": "^0.2.0",
     "vitepress": "^1.0.0-alpha.46",
     "vue": "^3.2.45"
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.3",
     "@commitlint/config-conventional": "^17.4.3",
+    "@types/lodash": "^4.14.191",
     "@types/mockjs": "^1.0.6",
     "@types/node": "^18.7.14",
     "@vitejs/plugin-vue": "^4.0.0",

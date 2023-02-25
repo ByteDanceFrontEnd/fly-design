@@ -1,18 +1,14 @@
 # Card 卡片
 
-卡片组件
+通用卡片容器。
 
-### 示例
+## 基础用法
 
-<Card imgSrc='/logo.png' summary='Vue组件库' width="175" />
+<preview path="../../examples/Card/basic.vue" title="" description=""></preview>
 
-### 代码
+## API
 
-```html
-<Card imgSrc="/logo.png" summary="Vue组件库" width="175" />
-```
-
-### Attributes
+### 属性
 
 | 参数      | 说明         | 类型        | 是否必要 | 默认值 |
 | --------- | ------------ | ----------- | -------- | ------ |

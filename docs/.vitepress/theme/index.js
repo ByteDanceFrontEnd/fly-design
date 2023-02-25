@@ -4,6 +4,9 @@ import DefaultTheme from 'vitepress/theme'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 NProgress.configure({ showSpinner: true })
+// 引入preview代码展示
+import { AntDesignContainer } from '@vitepress-demo-preview/component'
+import '@vitepress-demo-preview/component/dist/style.css'
 // 引入组件库组件
 import globals from '../client'
 // 引入elementplus
@@ -12,6 +15,7 @@ import globals from '../client'
 import { useRouter } from 'vitepress'
 import { watch, nextTick } from 'vue'
 import './style.css'
+import './index.scss'
 
 export default {
   ...DefaultTheme,
@@ -21,6 +25,7 @@ export default {
     globals.forEach(([name, Comp]) => {
       app.component(name, Comp)
     })
+    app.component('demo-preview', AntDesignContainer)
   },
   // 进度条
   setup() {

@@ -4,7 +4,7 @@
     emptyKeyWords
   }}</span>
   <!-- 搜索框 -->
-  <div class="search" v-if="filterable">
+  <!-- <div class="search" v-if="filterable">
     <svg-icon name="search" color="#c7c7c7" />
     <input
       type="text"
@@ -12,12 +12,12 @@
       size="small"
       @input="inputChange($event.target.value)"
     />
-  </div>
+  </div> -->
   <!-- 列表项 -->
   <!-- 没有找到好办法，只能根据条件控制显隐 -->
   <template v-if="leftOrRight == 'left'">
     <div
-      v-for="item in leftListData"
+      v-for="item in filtedData"
       :key="item.id"
       :class="['list-item', item.disabled ? 'disabled' : '']"
       :draggable="!item.disabled"
@@ -41,7 +41,7 @@
   </template>
   <template v-else>
     <div
-      v-for="item in rightListData"
+      v-for="item in filtedData"
       :key="item.id"
       :class="['list-item', item.disabled ? 'disabled' : '']"
       :draggable="!item.disabled"
@@ -104,6 +104,9 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  filtedData:{
+    type: Array as PropType<ITransferItem[]>,
+  }
 })
 let listData = computed(() => {
   if (props.leftOrRight == 'left') {
@@ -149,17 +152,17 @@ const inputChange = (value: string) => {
   console.log(value)
   let list = null
 
-  if (props.leftOrRight == 'left') {
-    list = cloneLeftList.filter((item) => {
-      return item.label?.includes(value)
-    })
-    emit('update:leftListData', list)
-  } else {
-    list = cloneRightList.filter((item) => {
-      return item.label?.includes(value)
-    })
-    emit('update:rightListData', list)
-  }
+  // if (props.leftOrRight == 'left') {
+  //   list = cloneLeftList.filter((item) => {
+  //     return item.label?.includes(value)
+  //   })
+  //   emit('update:leftListData', list)
+  // } else {
+  //   list = cloneRightList.filter((item) => {
+  //     return item.label?.includes(value)
+  //   })
+  //   emit('update:rightListData', list)
+  // }
   // listData.value = listData.value.filter((item) => {
   //   return item.label?.includes(value)
   // })

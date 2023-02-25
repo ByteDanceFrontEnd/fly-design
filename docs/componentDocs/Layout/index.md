@@ -21,89 +21,13 @@
 ## 代码演示
 
 ### 1.上中下布局
-<br>
-<div class="common-layout">
-    <Layout direction="vertical">
-        <Header>Header</Header>
-        <Contents>Content</Contents>
-        <Footer>Footer</Footer>
-    </Layout>
-</div>
-
-<details>
-<summary>显示代码</summary>
-
-```html
-<div class="common-layout">
-    <Layout direction="vertical">
-        <Header>Header</Header>
-        <Contents>Content</Contents>
-        <Footer>Footer</Footer>
-    </Layout>
-</div>
-```
-</details>
+<preview path="../../examples/Layout/layout1.vue" title="" description=""></preview>
 
 ### 2.顶部侧边布局
-<br/>
- <div class="common-layout">
-    <Layout direction="vertical">
-      <Header>Header</Header>
-      <Layout>
-        <Sider>Sider</Sider>
-        <Contents>Content</Contents>
-      </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
-</div>
-
-<details>
-<summary>显示代码</summary>
-
-```html
- <div class="common-layout">
-    <Layout direction="vertical">
-      <Header>Header</Header>
-      <Layout>
-        <Sider>Sider</Sider>
-        <Contents>Content</Contents>
-      </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
-</div>
-```
-</details>
-
+<preview path="../../examples/Layout/layout2.vue" title="" description=""></preview>
 
 ### 3.侧边布局
-<br>
-<div class="common-layout">
-    <Layout>
-        <Sider>Sider</Sider>
-        <Layout direction="vertical">
-        <Header>Header</Header>
-        <Contents>Content</Contents>
-        <Footer>Footer</Footer>
-        </Layout>
-    </Layout>
-</div>
-
-<details>
-<summary>显示代码</summary>
-
-```html
-<div class="common-layout">
-    <Layout>
-      <Sider>Sider</Sider>
-      <Layout direction="vertical">
-        <Header>Header</Header>
-        <Content>Content</Content>
-        <Footer>Footer</Footer>
-      </Layout>
-    </Layout>
-</div>
-```
-</details>
+<preview path="../../examples/Layout/layout3.vue" title="" description=""></preview>
 
 ## API
 ### Attributes

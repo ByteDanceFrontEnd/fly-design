@@ -1,3 +1,7 @@
+<script lang="ts">
+export default { name: 'Input' }
+</script>
+
 <template>
   <!-- 设置尺寸的input框 -->
   <div v-if="!type">

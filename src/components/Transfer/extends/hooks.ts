@@ -1,5 +1,5 @@
-import { ref, computed, reactive, watch, ComputedRef } from 'vue'
-import type { Ref } from 'vue'
+import { ref, computed, reactive, watch,watchEffect, ComputedRef } from 'vue'
+import type { Ref} from 'vue'
 import { ITransferItem } from '../typings'
 
 interface IuseRightList {
@@ -247,7 +247,7 @@ export function useSelect(
 
 interface IuseDataFilter {
   leftFiltedData: Ref<ITransferItem[]>
-  rightFiltedData: ITransferItem[]
+  rightFiltedData: Ref<ITransferItem[]>
   filterData: (leftOrRight: string, keywords: string) => void
 }
 
@@ -257,7 +257,7 @@ export function useDataFilter(
 ): IuseDataFilter {
   // 过滤后的数据
   const leftFiltedData = ref([...leftListData.value])
-  const rightFiltedData = [...rightListData.value]
+  const rightFiltedData = ref([...rightListData.value])
 
   function filterData(leftOrRight: string, keywords: string) {
     if (leftOrRight == 'left') {
@@ -265,15 +265,20 @@ export function useDataFilter(
       leftFiltedData.value = filterList(keywords, leftListData.value)
     } else {
       // console.log('right')
-      rightListData.value = filterList(keywords, rightListData.value)
+      rightFiltedData.value = filterList(keywords, rightListData.value)
     }
   }
+
+  watchEffect(() => {
+    leftFiltedData.value = leftListData.value
+    rightFiltedData.value = rightListData.value
+  })
 
   function filterList(
     keywords: string,
     itemList: ITransferItem[],
   ): ITransferItem[] {
-    return rightFiltedData.filter((item) => {
+    return itemList.filter((item) => {
       return item.label && item.label.includes(keywords)
     })
   }

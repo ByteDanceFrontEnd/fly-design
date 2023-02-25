@@ -1,7 +1,8 @@
+import { componentPreview, containerPreview } from '@vitepress-demo-preview/plugin'
+
 export default {
   title: 'Fly-Design',
   themeConfig: {
-    // siteTitle: false,
     logo: '/logo.png',
     nav: [
       { text: '指南', link: '/guide/installation' },
@@ -85,24 +86,11 @@ export default {
           ],
         },
         {
-          text: '导航',
-          items: [
-            {
-              text: 'DropDown 下拉菜单',
-              link: '/componentDocs/DropDown/',
-            },
-            {
-              text: 'Menu 导航菜单',
-              link: '/componentDocs/Menu/',
-            },
-          ],
-        },
-        {
           text: '数据录入',
           items: [
             {
-              text: 'Form 表单',
-              link: '/componentDocs/Form/',
+              text: 'Rate 评分',
+              link: '/componentDocs/Rate/',
             },
             {
               text: 'Input 输入框',
@@ -141,6 +129,15 @@ export default {
   },
   // 显示代码行号
   markdown: {
+    theme: {
+      light: 'vitesse-light',
+      dark: 'vitesse-dark'
+    },
     lineNumbers: true,
-  },
+    config(md) {
+      md.use(componentPreview)
+      md.use(containerPreview)
+    }
+  }
+
 }
