@@ -4,42 +4,13 @@
 
 ## 基础用法
 
-<Demo>
-
-<template #component>
-<Input placeholder="Please Input" />
-</template>
-<template #code>
-
-```vue
-<Input placeholder="Please Input" />
-```
-
-  </template>
-</Demo>
+<preview path="../../examples/Input/basic.vue" title="" description=""></preview>
 
 ## 设置尺寸
 
 使用 `size` 属性改变输入框大小。
 
-<Demo>
-  <template #component>
-    <Input placeholder="large size" size="large" />
-    <br /><br />
-    <Input placeholder="default size" />
-    <br /><br />
-    <Input placeholder="small size" size="small" />
-  </template>
-  <template #code>
-
-```vue
-<Input placeholder="large size" size="large" />
-<Input placeholder="default size" />
-<Input placeholder="small size" size="small" />
-```
-
-  </template>
-</Demo>
+<preview path="../../examples/Input/size.vue" title="" description=""></preview>
 
 ## 文本域
 
@@ -47,67 +18,23 @@
 
 文本域高度可通过 `rows` 属性控制，宽度可用 `cols` 属性控制。
 
-<Demo>
-  <template #component>
-    <Input placeholder="Please Input" rows="10" type="textarea" />
-  </template>
-  <template #code>
-
-```vue
-<Input placeholder="Please Input" rows="10" type="textarea" />
-```
-
-  </template>
-</Demo>
+<preview path="../../examples/Input/textarea.vue" title="" description=""></preview>
 
 ## 密码框
 
 使用`password`属性即可得到一个可切换显示隐藏的密码框
 
-<Demo>
-  <template #component>
-    <Input placeholder="please input password" type="password" />
-  </template>
-  <template #code>
-
-```vue
-<Input placeholder="please input password" type="password" />
-```
-
-  </template>
-</Demo>
+<preview path="../../examples/Input/password.vue" title="" description=""></preview>
 
 ## 搜索框
 
 通过`type="search"`属性来将`input`元素转换为搜索框。
 
-<Demo>
-  <template #component>
-    <Input placeholder="input search text" type="search" :fn="fun" />
-  </template>
-  <template #code>
-
-```vue
-<Input placeholder="input search text" type="search" :fn="fun" />
-```
-
-  </template>
-</Demo>
+<preview path="../../examples/Input/search.vue" title="" description=""></preview>
 
 ## 带缓存的搜索框
 
-<Demo>
-  <template #component>
-    <Input placeholder="input search text" type="cache-search" />
-  </template>
-  <template #code>
-
-```vue
-<Input placeholder="input search text" type="cache-search" />
-```
-
-  </template>
-</Demo>
+<preview path="../../examples/Input/cacheSearch.vue" title="" description=""></preview>
 
 ## API
 
