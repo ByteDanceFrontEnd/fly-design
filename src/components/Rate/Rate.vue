@@ -2,21 +2,23 @@
   <div>
     <ul class="wrap">
       <li v-for="num in 5" :key="num" class="item">
-          <span
+        <span
           v-if="allowHalf"
           class="first"
           :class="[
             'iconfont',
             slots.character ? '' : 'icon-star',
-            num-0.5 <= starNum ? 'active' : '',
-            num-0.5 <= overStarNum ? 'overActive' : 'noActive',
+            num - 0.5 <= starNum ? 'active' : '',
+            num - 0.5 <= overStarNum ? 'overActive' : 'noActive',
             disabled ? 'disabled' : '',
           ]"
           :style="{ fontSize: fontSize + 'px' }"
-          @mouseenter="setOverStarNum(num-0.5)"
+          @mouseenter="setOverStarNum(num - 0.5)"
           @mouseleave="setOverStarNum(starNum)"
-          @click="setStarNum(num-0.5)"
-        > <slot name="character"></slot></span>
+          @click="setStarNum(num - 0.5)"
+        >
+          <slot name="character"></slot
+        ></span>
         <span
           class="second"
           :class="[
@@ -30,10 +32,8 @@
           @mouseenter="setOverStarNum(num)"
           @mouseleave="setOverStarNum(starNum)"
           @click="setStarNum(num)"
-        ><slot name="character"></slot></span>
-
-       
-        
+          ><slot name="character"></slot
+        ></span>
       </li>
     </ul>
   </div>
@@ -53,14 +53,14 @@ interface Iemits {
   (e: 'update:modelValue', val: number): void
 }
 const slots = useSlots()
-console.log(slots);
+console.log(slots)
 
 const props = withDefaults(defineProps<Iprops>(), {
   modelValue: 0,
   fontSize: 20,
   disabled: false,
   allowClear: false,
-  allowHalf: false
+  allowHalf: false,
 })
 const emit = defineEmits<Iemits>()
 const { starNum, setStarNum, overStarNum, setOverStarNum } = useStars(
