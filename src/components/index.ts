@@ -1,5 +1,4 @@
 import { App } from 'vue'
-// import './style/reset.css'
 import Card from './card/index'
 import Transfer from './Transfer'
 import Input from './Input'

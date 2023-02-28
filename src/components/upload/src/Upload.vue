@@ -38,6 +38,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 // ts不太熟，我先用js写，之后再修改成ts
 import { reactive, ref, watch, toRefs } from 'vue'
@@ -69,7 +70,6 @@ function handleFileUploader(event, type) {
       document.getElementById('file-input').click()
     },
     change: (event) => {
-      // console.log(event.target.files)
       sourceFiles.value.push(event.target.files)
     },
     drop: (event) => {
