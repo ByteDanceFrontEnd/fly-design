@@ -5,27 +5,21 @@
   </div>
 
   <!-- Transfer -->
-  <Transfer 
+  <Transfer
     v-model="value"
-    :data="data" 
-    filterable 
+    :data="data"
+    filterable
     :titles="['左边', '右边']"
     empty-key-words="没有数据"
-    :button-texts="['To left', 'To right']">
-
-    <template #left-footer>
-      opration1
-    </template>
-    <template #right-footer>
-      opration2
-    </template>
+    :button-texts="['To left', 'To right']"
+  >
+    <template #left-footer> opration1 </template>
+    <template #right-footer> opration2 </template>
   </Transfer>
 
   <!-- Rate -->
-  <Rate v-model="rateVal" :font-size="30" allow-clear allow-half >
-    <!-- <template #character>
-      A
-    </template> -->
+  <Rate v-model="rateVal" :font-size="30" allow-clear allow-half>
+    <template #character> A </template>
   </Rate>
 
   <!-- Input -->

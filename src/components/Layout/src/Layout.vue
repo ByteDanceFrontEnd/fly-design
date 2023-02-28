@@ -12,7 +12,6 @@ interface Itype {
 const props = withDefaults(defineProps<Itype>(), {
   direction: 'horizontal',
 })
-console.log(props.direction)
 
 const isVertical = computed(() => {
   if (props.direction == 'vertical') {

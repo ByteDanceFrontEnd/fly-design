@@ -1,6 +1,6 @@
 {
   "name": "fly-design",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Vue3+Vite+TS组件库",
   "main": "fly-design.umd.js",
   "module": "fly-design.mjs",

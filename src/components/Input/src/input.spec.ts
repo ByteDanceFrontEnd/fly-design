@@ -16,10 +16,14 @@ describe('Input Test', () => {
       props: {
         type: 'textarea',
         placeholder: 'Hello World',
+        rows: 5,
+        cols: 33,
       },
     })
     expect(demoInput2.find('textarea').attributes().placeholder).toBe(
       'Hello World',
     )
+    expect(demoInput2.find('textarea').attributes().rows).toBe('5')
+    expect(demoInput2.find('textarea').attributes().cols).toBe('33')
   })
 })
