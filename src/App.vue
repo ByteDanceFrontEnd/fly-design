@@ -102,6 +102,9 @@
       <div class="fly-uploader--tip">只能上传jpg/png文件，且不超过500kb</div>
     </template>
   </upload>
+
+  <!-- Dropdown -->
+  <Dropdown />
 </template>
 
 <script setup>
