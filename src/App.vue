@@ -5,7 +5,7 @@
   </div>
 
   <!-- Transfer -->
-  <Transfer
+  <!-- <Transfer
     v-model="value"
     :data="data"
     filterable
@@ -15,15 +15,15 @@
   >
     <template #left-footer> opration1 </template>
     <template #right-footer> opration2 </template>
-  </Transfer>
+  </Transfer> -->
 
   <!-- Rate -->
-  <Rate v-model="rateVal" :font-size="30" allow-clear allow-half>
+  <!-- <Rate v-model="rateVal" :font-size="30" allow-clear allow-half>
     <template #character> A </template>
-  </Rate>
+  </Rate> -->
 
   <!-- Input -->
-  <div class="myInput">
+  <!-- <div class="myInput">
     <Input placeholder="Hello" size="large" />
     <br /><br />
     <Input placeholder="Hello" />
@@ -37,10 +37,10 @@
     <Input placeholder="input search text" type="cache-search" />
     <br /><br />
     <Input placeholder="please input password" type="password" />
-  </div>
+  </div> -->
 
   <!-- Button -->
-  <div>
+  <!-- <div class="button">
     <Button>Default</Button>
     <Button type="primary">Primary</Button>
     <Button type="success">Success</Button>
@@ -48,20 +48,20 @@
     <Button type="warning">Warning</Button>
     <Button type="info">Info</Button>
     <Button disabled>Disabled</Button>
-  </div>
+  </div> -->
 
   <!-- Layout -->
   <!-- 上中下布局 -->
-  <div class="common-layout">
+  <!-- <div class="common-layout">
     <Layout direction="vertical">
       <Header>Header</Header>
       <Content>Content</Content>
       <Footer>Footer</Footer>
     </Layout>
   </div>
-  <br />
+  <br /> -->
   <!-- 顶部侧边布局 -->
-  <div class="common-layout">
+  <!-- <div class="common-layout">
     <Layout direction="vertical">
       <Header>Header</Header>
       <Layout>
@@ -71,9 +71,9 @@
       <Footer>Footer</Footer>
     </Layout>
   </div>
-  <br />
+  <br /> -->
   <!-- 侧边布局 -->
-  <div class="common-layout">
+  <!-- <div class="common-layout">
     <Layout>
       <Sider>Sider</Sider>
       <Layout direction="vertical">
@@ -82,10 +82,10 @@
         <Footer>Footer</Footer>
       </Layout>
     </Layout>
-  </div>
+  </div> -->
 
   <!-- upload -->
-  <upload
+  <!-- <upload
     class="uploader-area"
     accept="images/png images/jpeg"
     :size="1920 * 1080"
@@ -101,10 +101,15 @@
     <template v-slot:tip>
       <div class="fly-uploader--tip">只能上传jpg/png文件，且不超过500kb</div>
     </template>
-  </upload>
+  </upload> -->
 
   <!-- Dropdown -->
-  <Dropdown />
+  <div class="drowdown">
+    <Dropdown
+      selectedOption="Dropdown List"
+      :options="['Action 1', 'Action 2', 'Action 3']"
+    />
+  </div>
 </template>
 
 <script setup>
@@ -222,5 +227,13 @@ function fun() {
 
 .myInput {
   margin-left: 20px;
+}
+
+.dropdown {
+  margin: 20px;
+}
+
+.button {
+  width: 1000px;
 }
 </style>
