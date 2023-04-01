@@ -1,24 +1,26 @@
-<script lang="ts">
-export default { name: 'Button' }
-</script>
-
 <template>
   <div :class="fClass">
-    <button><slot></slot></button>
+    <button ref="buttonRef"><slot></slot></button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 interface Itype {
   type?: string
   disabled?: boolean
+  size?: string
+  shape?: string
+  color?: string
 }
 
 const props = withDefaults(defineProps<Itype>(), {
   type: 'default',
   disabled: false,
+  size: '',
+  shape: '',
+  color: '',
 })
 
 const fClass = computed(() => {
@@ -26,12 +28,22 @@ const fClass = computed(() => {
     'f-button',
     `f-button-${props.type}`,
     `f-button-${props.disabled ? 'disabled' : ''}`,
+    `f-button-${props.size}`,
+    `f-button-${props.shape}`,
   ]
+})
+
+let buttonRef = ref()
+
+onMounted(() => {
+  if (props.color) {
+    buttonRef.value.style.color = 'white'
+    buttonRef.value.style.background = props.color
+  }
 })
 </script>
 
 <style lang="scss" scoped>
-
 div {
   display: inline-block;
 }
@@ -64,38 +76,38 @@ button {
     }
 
     button:hover {
-      border: 1px solid #409EFF;
-      color: #409EFF;
+      border: 1px solid #409eff;
+      color: #409eff;
     }
   }
 
   &-primary {
     button {
-      background: #1677FF;
+      background: #1677ff;
     }
   }
 
   &-success {
     button {
-      background: #67C23A;
+      background: #67c23a;
     }
   }
 
   &-danger {
     button {
-      background: #DC3545;
+      background: #dc3545;
     }
   }
 
   &-warning {
     button {
-      background: #FFC107;
+      background: #ffc107;
     }
   }
 
   &-info {
     button {
-      background: #0DCAF0;
+      background: #0dcaf0;
     }
   }
 
@@ -107,6 +119,27 @@ button {
       &:focus {
         opacity: 0.4;
       }
+    }
+  }
+
+  &-small {
+    button {
+      height: 35px;
+      width: 72px;
+      padding: 0;
+    }
+  }
+
+  &-large {
+    button {
+      height: 56px;
+      width: 112px;
+    }
+  }
+
+  &-round {
+    button {
+      border-radius: 30px;
     }
   }
 }
