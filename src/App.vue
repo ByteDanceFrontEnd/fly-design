@@ -5,7 +5,7 @@
   </div>
 
   <!-- Transfer -->
-  <Transfer
+  <!-- <Transfer
     v-model="value"
     :data="data"
     filterable
@@ -15,15 +15,15 @@
   >
     <template #left-footer> opration1 </template>
     <template #right-footer> opration2 </template>
-  </Transfer>
+  </Transfer> -->
 
   <!-- Rate -->
-  <Rate v-model="rateVal" :font-size="30" allow-clear allow-half>
+  <!-- <Rate v-model="rateVal" :font-size="30" allow-clear allow-half>
     <template #character> A </template>
-  </Rate>
+  </Rate> -->
 
   <!-- Input -->
-  <div class="myInput">
+  <!-- <div class="input">
     <Input placeholder="Hello" size="large" />
     <br /><br />
     <Input placeholder="Hello" />
@@ -37,10 +37,10 @@
     <Input placeholder="input search text" type="cache-search" />
     <br /><br />
     <Input placeholder="please input password" type="password" />
-  </div>
+  </div> -->
 
   <!-- Button -->
-  <div>
+  <!-- <div class="button">
     <Button>Default</Button>
     <Button type="primary">Primary</Button>
     <Button type="success">Success</Button>
@@ -48,20 +48,36 @@
     <Button type="warning">Warning</Button>
     <Button type="info">Info</Button>
     <Button disabled>Disabled</Button>
-  </div>
+    <br />
+    <Button type="primary" size="small">Primary</Button>
+    <Button type="success">Success</Button>
+    <Button type="danger" size="large">Danger</Button>
+    <Button type="warning">Warning</Button>
+    <Button type="info">Info</Button>
+    <br />
+    <Button type="primary" shape="round">Primary</Button>
+    <Button type="success" shape="round">Success</Button>
+    <Button type="danger" shape="round">Danger</Button>
+    <Button type="warning" size="small" shape="round">Warning</Button>
+    <Button type="info" size="large" shape="round">Info</Button>
+    <br />
+    <Button color="#626aef">purple</Button>
+    <Button color="#ffc107">orange</Button>
+    <Button color="#dc3545">red</Button>
+  </div> -->
 
   <!-- Layout -->
   <!-- 上中下布局 -->
-  <div class="common-layout">
+  <!-- <div class="common-layout">
     <Layout direction="vertical">
       <Header>Header</Header>
       <Content>Content</Content>
       <Footer>Footer</Footer>
     </Layout>
   </div>
-  <br />
+  <br /> -->
   <!-- 顶部侧边布局 -->
-  <div class="common-layout">
+  <!-- <div class="common-layout">
     <Layout direction="vertical">
       <Header>Header</Header>
       <Layout>
@@ -71,9 +87,9 @@
       <Footer>Footer</Footer>
     </Layout>
   </div>
-  <br />
+  <br /> -->
   <!-- 侧边布局 -->
-  <div class="common-layout">
+  <!-- <div class="common-layout">
     <Layout>
       <Sider>Sider</Sider>
       <Layout direction="vertical">
@@ -82,26 +98,32 @@
         <Footer>Footer</Footer>
       </Layout>
     </Layout>
-  </div>
+  </div> -->
 
   <!-- upload -->
-  <upload
-    class="uploader-area"
-    accept="images/png images/jpeg"
-    :size="1920 * 1080"
-    :limit="3"
-    :on-success="uploadSuccess"
-    :on-error="uploadError"
-  >
-    <template v-slot:uploader-area>
-      <div>
-        <div class="fly-uploader--text">将文件拖到此处，或<a>点击上传</a></div>
-      </div>
-    </template>
-    <template v-slot:tip>
-      <div class="fly-uploader--tip">只能上传jpg/png文件，且不超过500kb</div>
-    </template>
-  </upload>
+  <div class="upload">
+    <upload class="uploader-area" accept="images/png images/jpeg" :size="1920 * 1080" :limit="3"
+      :on-success="uploadSuccess" :on-error="uploadError">
+      <template v-slot:uploader-area>
+        <div>
+          <div class="fly-uploader--text">
+            将文件拖到此处，或<a>点击上传</a>
+          </div>
+        </div>
+      </template>
+      <template v-slot:tip>
+        <div class="fly-uploader--tip">只能上传jpg/png文件，且不超过500kb</div>
+      </template>
+    </upload>
+  </div>
+
+  <!-- Dropdown -->
+  <!-- <div class="drowdown">
+    <Dropdown
+      selectedOption="Dropdown List"
+      :options="['Action 1', 'Action 2', 'Action 3']"
+    />
+  </div> -->
 </template>
 
 <script setup>
@@ -217,7 +239,19 @@ function fun() {
   text-align: center;
 }
 
-.myInput {
-  margin-left: 20px;
+.input {
+  margin: 20px;
+}
+
+.upload {
+  margin: 20px;
+}
+
+.dropdown {
+  margin: 20px;
+}
+
+.button {
+  width: 1000px;
 }
 </style>

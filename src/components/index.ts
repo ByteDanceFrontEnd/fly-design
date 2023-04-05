@@ -6,8 +6,18 @@ import Button from './Button'
 import Layout from './Layout'
 import Upload from './upload'
 import Rate from './Rate'
+import Dropdown from './Dropdown'
 
-const components = [Card, Transfer, Input, Button, Layout, Upload, Rate]
+const components = [
+  Card,
+  Transfer,
+  Input,
+  Button,
+  Layout,
+  Upload,
+  Rate,
+  Dropdown,
+]
 
 export default {
   install(app: App) {

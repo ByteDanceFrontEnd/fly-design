@@ -1,4 +1,21 @@
 <template>
+  <div class="fly-uplouder-wrapper" @drop="(event) => handleFileUploader(event, 'drop')" @dragover="prevent"
+    @dragenter="prevent">
+    <div class="fly-uploader-imagelist">
+      <!-- 上传主体区域 -->
+      <div class="fly-uploader-container" @click="(event) => handleFileUploader(event, 'click')">
+        <!-- 文件上传区域设计成一个插槽，用户可以根据需求自定义上传区域的样式 -->
+        <slot name="uploader-area"></slot>
+        <!-- 一个隐藏的文件上传input框 -->
+        <input id="file-input" type="file" class="fly-file__invisible" ref="file"
+          @change="(event) => handleFileUploader(event, 'change')" />
+      </div>
+    </div>
+    <!-- 注意事项 -->
+    <div>
+      <slot name="tip"></slot>
+    </div>
+  </div>
   <!-- 图片预览区域 -->
   <ul class="preview-images-list">
     <li v-for="(file, index) in tempImages" :key="index">
@@ -8,35 +25,6 @@
       </span>
     </li>
   </ul>
-  <div
-    class="fly-uplouder-wrapper"
-    @drop="(event) => handleFileUploader(event, 'drop')"
-    @dragover="prevent"
-    @dragenter="prevent"
-  >
-    <div class="fly-uploader-imagelist">
-      <!-- 上传主体区域 -->
-      <div
-        class="fly-uploader-container"
-        @click="(event) => handleFileUploader(event, 'click')"
-      >
-        <!-- 文件上传区域设计成一个插槽，用户可以根据需求自定义上传区域的样式 -->
-        <slot name="uploader-area"></slot>
-        <!-- 一个隐藏的文件上传input框 -->
-        <input
-          id="file-input"
-          type="file"
-          class="fly-file__invisible"
-          ref="file"
-          @change="(event) => handleFileUploader(event, 'change')"
-        />
-      </div>
-    </div>
-    <!-- 注意事项 -->
-    <div>
-      <slot name="tip"></slot>
-    </div>
-  </div>
 </template>
 
 <script setup>
@@ -74,7 +62,6 @@ function handleFileUploader(event, type) {
     },
     drop: (event) => {
       event.preventDefault()
-      console.log(event.dataTransfer.files)
       sourceFiles.value.push(event.dataTransfer.files)
     },
   })
@@ -138,7 +125,6 @@ function deleteImage(index) {
 
 watch(sourceFiles.value, (value) => {
   let files = Array.from(value)
-  console.log(sourceFiles.value)
   const { size, accept, onError, limit } = toRefs(props)
 
   // 文件校验
@@ -156,6 +142,5 @@ watch(sourceFiles.value, (value) => {
 
   // 处理图片文件
   handleImages(files)
-  console.log(tempImages)
 })
 </script>

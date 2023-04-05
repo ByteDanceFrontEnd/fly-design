@@ -1,9 +1,9 @@
 {
   "name": "fly-design",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Vue3+Vite+TS组件库",
-  "main": "fly-design.umd.js",
-  "module": "fly-design.mjs",
+  "main": "index.umd.js",
+  "module": "index.mjs",
   "author": {
     "name": "NullPointer"
   },
