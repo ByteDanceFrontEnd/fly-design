@@ -17,13 +17,7 @@
 
   <!-- 密码框 -->
   <div v-if="type === 'password'" class="password">
-    <input
-      class="password-input"
-      :placeholder="placeholder"
-      @blur="inputBlur"
-      @focus="inputFocus"
-      id="password-input"
-    />
+    <input class="password-input" :placeholder="placeholder" @blur="inputBlur" @focus="inputFocus" id="password-input" />
     <span id="password-span" class="password-span-blur">
       <img @click="changeImg" :src="imgSrc" />
     </span>
@@ -31,48 +25,25 @@
 
   <!-- 带缓存的搜索框 -->
   <div v-if="type === 'cache-search'" class="cache-search">
-    <input
-      :placeholder="placeholder"
-      @blur="blurChange"
-      @focus="focusChange"
-      @keyup.enter="addItem"
-      class="cache-search-input-blur"
-      id="cache-search-input"
-      v-model="inputValue"
-      ref="searchInput"
-    />
+    <input :placeholder="placeholder" @blur="blurChange" @focus="focusChange" @keyup.enter="addItem"
+      class="cache-search-input-blur" id="cache-search-input" v-model="inputValue" ref="searchInput" />
     <button @click="addItem">
       <img src="https://img1.imgtp.com/2023/02/12/mKWB4ns6.png" />
     </button>
     <br />
     <div class="cache-search-title" v-if="flag && searchHistory.length > 0">
       <div class="cache-search-title-history">搜索历史</div>
-      <button class="cache-search-title-clear" @click="clearHistory">
-        清空
-      </button>
+      <button class="cache-search-title-clear" @click="clearHistory">清空</button>
     </div>
-    <div
-      class="cache-search-list"
-      v-if="flag && searchHistory.length > 0 && !inputValue"
-    >
-      <div
-        v-for="(item, index) in searchHistory"
-        :key="index"
-        @click="changeItem(item)"
-      >
+    <div class="cache-search-list" v-if="flag && searchHistory.length > 0 && !inputValue">
+      <div v-for="(item, index) in searchHistory" :key="index" @click="changeItem(item)">
         {{ item }}
       </div>
     </div>
-    <div
-      class="cache-search-list"
-      v-if="flag && searchHistory1.length > 0 && inputValue"
-    >
-      <div
-        v-for="(item, index) in searchHistory1"
-        :key="index"
-        @click="changeItem(item[0] + item[1])"
-      >
-        <p>{{ item[0] }}</p>{{ item[1] }}
+    <div class="cache-search-list" v-if="flag && searchHistory1.length > 0 && inputValue">
+      <div v-for="(item, index) in searchHistory1" :key="index" @click="changeItem(item[0] + item[1])">
+        <p>{{ item[0] }}</p>
+        <span>{{ item[1] }}</span>
       </div>
     </div>
   </div>
@@ -108,16 +79,16 @@ const props = withDefaults(defineProps<InputProps>(), {
 const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
-let searchHistory1 = ref<Array<[string,string]>>([])
+let searchHistory1 = ref<Array<[string, string]>>([])
 let url1: string = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
 let url2: string = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
 const imgSrc = ref<string>(url1)
-const searchInput = ref(null);
+const searchInput = ref()
 
 onMounted(() => {
-  const input = searchInput.value
+  const input: HTMLInputElement = searchInput.value
   if (input) {
-    (input as HTMLInputElement).addEventListener('input', debounce(search, 500))
+    input.addEventListener('input', debounce(search, 100))
   }
 })
 
@@ -133,7 +104,7 @@ function search() {
     return
   }
   for (const item of searchHistory.value) {
-    if (item.length >= len && item.substring(0,len) === temp) {
+    if (item.length >= len && item.substring(0, len) === temp) {
       searchHistory1.value.push([temp, item.substring(len)])
     }
   }
@@ -185,9 +156,7 @@ function changeItem(value: string) {
 }
 
 function changeImg() {
-  const inputElement = document.getElementById(
-    'password-input',
-  ) as HTMLInputElement
+  const inputElement = document.getElementById('password-input') as HTMLInputElement
   if (imgSrc.value === url1) {
     imgSrc.value = url2
     if (inputElement) {

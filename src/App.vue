@@ -23,7 +23,7 @@
   </Rate> -->
 
   <!-- Input -->
-  <!-- <div class="myInput">
+  <div class="input">
     <Input placeholder="Hello" size="large" />
     <br /><br />
     <Input placeholder="Hello" />
@@ -37,10 +37,10 @@
     <Input placeholder="input search text" type="cache-search" />
     <br /><br />
     <Input placeholder="please input password" type="password" />
-  </div> -->
+  </div>
 
   <!-- Button -->
-  <div class="button">
+  <!-- <div class="button">
     <Button>Default</Button>
     <Button type="primary">Primary</Button>
     <Button type="success">Success</Button>
@@ -64,7 +64,7 @@
     <Button color="#626aef">purple</Button>
     <Button color="#ffc107">orange</Button>
     <Button color="#dc3545">red</Button>
-  </div>
+  </div> -->
 
   <!-- Layout -->
   <!-- 上中下布局 -->
@@ -101,23 +101,27 @@
   </div> -->
 
   <!-- upload -->
-  <!-- <upload
-    class="uploader-area"
-    accept="images/png images/jpeg"
-    :size="1920 * 1080"
-    :limit="3"
-    :on-success="uploadSuccess"
-    :on-error="uploadError"
-  >
-    <template v-slot:uploader-area>
-      <div>
-        <div class="fly-uploader--text">将文件拖到此处，或<a>点击上传</a></div>
-      </div>
-    </template>
-    <template v-slot:tip>
-      <div class="fly-uploader--tip">只能上传jpg/png文件，且不超过500kb</div>
-    </template>
-  </upload> -->
+  <!-- <div class="upload">
+    <upload
+      class="uploader-area"
+      accept="images/png images/jpeg"
+      :size="1920 * 1080"
+      :limit="3"
+      :on-success="uploadSuccess"
+      :on-error="uploadError"
+    >
+      <template v-slot:uploader-area>
+        <div>
+          <div class="fly-uploader--text">
+            将文件拖到此处，或<a>点击上传</a>
+          </div>
+        </div>
+      </template>
+      <template v-slot:tip>
+        <div class="fly-uploader--tip">只能上传jpg/png文件，且不超过500kb</div>
+      </template>
+    </upload>
+  </div> -->
 
   <!-- Dropdown -->
   <!-- <div class="drowdown">
@@ -241,8 +245,12 @@ function fun() {
   text-align: center;
 }
 
-.myInput {
-  margin-left: 20px;
+.input {
+  margin: 20px;
+}
+
+.upload {
+  margin: 20px;
 }
 
 .dropdown {
