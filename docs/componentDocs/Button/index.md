@@ -6,6 +6,10 @@
 
 <preview path="../../examples/Button/basic.vue" title="" description=""></preview>
 
+## 点击动画
+
+<preview path="../../examples/Button/animation.vue" title="" description=""></preview>
+
 ## 按钮大小
 
 <preview path="../../examples/Button/size.vue" title="" description=""></preview>
@@ -30,6 +34,7 @@
 | :------: | :--------------: | :-----: | :----: |
 |   type   |   设置按钮类型   | string  |   -    |
 | disabled | 设置按钮失效状态 | boolean |   -    |
+|animation|设置按钮点击动画|boolean|-|
 |   size   |   设置按钮大小   | string  |   -    |
 |  shape   |   设置按钮形状   | string  |   -    |
 |  color   |   设置按钮颜色   | string  |   -    |
