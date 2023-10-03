@@ -1,7 +1,7 @@
 # Fly Design 组件库
 
 <p align="center">
-  <img height="160px" src="https://img1.imgtp.com/2023/02/12/dlyJ6rh9.ico">
+  <img height="160px" src="https://gitee.com/pcjmy/images/raw/master/logo.png">
   <h2 align="center" style="font-weight: 600">Fly Design</h2>
 </p>
 

@@ -1,6 +1,8 @@
 <template>
   <div :class="fClass">
-    <button ref="buttonRef"><slot></slot></button>
+    <button ref="buttonRef">
+      <slot></slot>
+    </button>
   </div>
 </template>
 
@@ -10,6 +12,7 @@ import { ref, computed, onMounted } from 'vue'
 interface Itype {
   type?: string
   disabled?: boolean
+  animation?: boolean
   size?: string
   shape?: string
   color?: string
@@ -18,6 +21,7 @@ interface Itype {
 const props = withDefaults(defineProps<Itype>(), {
   type: 'default',
   disabled: false,
+  animation: false,
   size: '',
   shape: '',
   color: '',
@@ -28,6 +32,7 @@ const fClass = computed(() => {
     'f-button',
     `f-button-${props.type}`,
     `f-button-${props.disabled ? 'disabled' : ''}`,
+    `f-button-${props.animation ? 'animation' : ''}`,
     `f-button-${props.size}`,
     `f-button-${props.shape}`,
   ]
@@ -53,13 +58,16 @@ button {
   border: 0;
   background: none;
   cursor: pointer;
+
   &:hover,
   &:focus {
     opacity: 0.8;
   }
 }
+
 .f-button {
   padding: 10px 10px;
+
   button {
     padding: 12px 24px;
     border-radius: 4px;
@@ -115,9 +123,48 @@ button {
     button {
       opacity: 0.4;
       cursor: no-drop;
+
       &:hover,
       &:focus {
         opacity: 0.4;
+      }
+    }
+  }
+
+  &-animation {
+    button {
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        opacity: 1.0;
+      }
+
+      &:focus {
+        opacity: 1.0;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle, #fff 10%, transparent 11%);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        transform: scale(12, 12);
+        opacity: 0;
+        transition: transform .6s, opacity .6s;
+      }
+
+      &:active::after {
+        transform: scale(0, 0);
+        opacity: .3;
+        transition: 0s;
       }
     }
   }
@@ -132,8 +179,8 @@ button {
 
   &-large {
     button {
-      height: 56px;
-      width: 112px;
+      height: 48px;
+      width: 108px;
     }
   }
 
