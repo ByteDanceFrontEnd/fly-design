@@ -17,7 +17,13 @@
 
   <!-- 密码框 -->
   <div v-if="type === 'password'" class="password">
-    <input class="password-input" :placeholder="placeholder" @blur="inputBlur" @focus="inputFocus" id="password-input" />
+    <input
+      class="password-input"
+      :placeholder="placeholder"
+      @blur="inputBlur"
+      @focus="inputFocus"
+      id="password-input"
+    />
     <span id="password-span" class="password-span-blur">
       <img @click="changeImg" :src="imgSrc" />
     </span>
@@ -25,10 +31,18 @@
 
   <!-- 带缓存的搜索框 -->
   <div v-if="type === 'cache-search'" class="cache-search">
-    <input :placeholder="placeholder" @blur="blurChange" @focus="focusChange" @keyup.enter="addItem"
-      class="cache-search-input-blur" id="cache-search-input" v-model="inputValue" ref="searchInput" />
+    <input
+      :placeholder="placeholder"
+      @blur="blurChange"
+      @focus="focusChange"
+      @keyup.enter="addItem"
+      class="cache-search-input-blur"
+      id="cache-search-input"
+      v-model="inputValue"
+      ref="searchInput"
+    />
     <button @click="addItem">
-      <img src="https://img1.imgtp.com/2023/02/12/mKWB4ns6.png" />
+      <img src="https://gitee.com/pcjmy/images/raw/master/search.png" />
     </button>
     <br />
     <div class="cache-search-title" v-if="flag && searchHistory.length > 0">
@@ -41,7 +55,11 @@
       </div>
     </div>
     <div class="cache-search-list" v-if="flag && searchHistory1.length > 0 && inputValue">
-      <div v-for="(item, index) in searchHistory1" :key="index" @click="changeItem(item[0] + item[1])">
+      <div
+        v-for="(item, index) in searchHistory1"
+        :key="index"
+        @click="changeItem(item[0] + item[1])"
+      >
         <p>{{ item[0] }}</p>
         <span>{{ item[1] }}</span>
       </div>
@@ -80,8 +98,8 @@ const flag = ref<boolean>(true)
 const inputValue = ref<string>('')
 let searchHistory = ref<string[]>([])
 let searchHistory1 = ref<Array<[string, string]>>([])
-let url1: string = 'https://img1.imgtp.com/2023/02/12/86q3pyMC.png'
-let url2: string = 'https://img1.imgtp.com/2023/02/12/5lVT5sTv.png'
+let url1: string = 'https://gitee.com/pcjmy/images/raw/master/eye.png'
+let url2: string = 'https://gitee.com/pcjmy/images/raw/master/eye-close.png'
 const imgSrc = ref<string>(url1)
 const searchInput = ref()
 
